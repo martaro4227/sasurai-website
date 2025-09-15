@@ -1,0 +1,26 @@
+{
+  "name": "sasurai-website",
+  "version": "1.0.0",
+  "description": "SASURAI - AIで成長し続けるWebサイト",
+  "main": "index.html",
+  "scripts": {
+    "dev": "serve -s . -l 3000",
+    "build": "echo 'Static site - no build needed'",
+    "start": "serve -s . -l 3000"
+  },
+  "keywords": [
+    "AI",
+    "website",
+    "optimization",
+    "machine-learning",
+    "web-development"
+  ],
+  "author": "SASURAI",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
