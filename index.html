@@ -1,1263 +1,1193 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Description" content="AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービス">
-  <meta name="Keywords" content="AI, Webサイト, 自動最適化, 機械学習, Web開発, デジタルマーケティング">
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社SASURAI | AIで成長し続けるWebサイト</title>
+    <meta name="description" content="AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービス">
+    <meta name="keywords" content="AI, Webサイト, 自動最適化, 機械学習, Web開発, デジタルマーケティング">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="株式会社SASURAI | AIで成長し続けるWebサイト">
+    <meta property="og:description" content="AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービス">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "株式会社SASURAI",
+        "description": "AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービス",
+        "url": "https://your-domain.com",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+81-3-1234-5678",
+            "contactType": "customer service"
+        }
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23grad)"/><circle cx="800" cy="300" r="150" fill="url(%23grad)"/><circle cx="600" cy="700" r="120" fill="url(%23grad)"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            z-index: 1;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad2" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" /><stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></radialGradient></defs><circle cx="150" cy="150" r="80" fill="url(%23grad2)"/><circle cx="850" cy="200" r="120" fill="url(%23grad2)"/><circle cx="700" cy="800" r="100" fill="url(%23grad2)"/></svg>') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .services .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            padding: 5rem 0;
+            background: #f8fafc;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .case-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .case-content {
+            padding: 2rem;
+        }
+
+        .case-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .case-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .case-results {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .result-item {
+            background: #f0f4ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Blog Section */
+        .blog {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .blog-content p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: white;
+            transform: scale(1.02);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1rem;
+            text-align: center;
+            color: #999;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .case-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="ja"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;株式会社SASURAI | AIで成長し続けるWebサイト&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービス"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="keywords" content="AI, Webサイト, 自動最適化, 機械学習, Web開発, デジタルマーケティング"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Open Graph --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta property="og:title" content="株式会社SASURAI | AIで成長し続けるWebサイト"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta property="og:description" content="AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービス"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta property="og:type" content="website"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta property="og:url" content="https://your-domain.com"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">    </span></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Structured Data --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script type="application/ld+json"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>{</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"@context": "https://schema.org",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"@type": "Organization",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"name": "株式会社SASURAI",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"description": "AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービス",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"url": "https://your-domain.com",</p>
-<p class="p1"><span class="Apple-converted-space">        </span>"contactPoint": {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>"@type": "ContactPoint",</p>
-<p class="p1"><span class="Apple-converted-space">            </span>"telephone": "+81-3-1234-5678",</p>
-<p class="p1"><span class="Apple-converted-space">            </span>"contactType": "customer service"</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>* {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow-x: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Header */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.header {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.95);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1000;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.header.scrolled {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.98);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.nav-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.logo {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-background-clip: text;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-text-fill-color: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-clip: text;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.nav-menu {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>list-style: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.nav-menu a {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 500;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: color 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.nav-menu a:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.nav-menu a::after {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 2px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>bottom: -5px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: width 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.nav-menu a:hover::after {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-button {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.8rem 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: transform 0.3s ease, box-shadow 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.cta-button:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Hero Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero::before {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: url('data:image/svg+xml,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"&gt;&lt;defs&gt;&lt;radialGradient id="grad" cx="50%" cy="50%" r="50%"&gt;&lt;stop offset="0%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /&gt;&lt;stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /&gt;&lt;/radialGradient&gt;&lt;/defs&gt;&lt;circle cx="200" cy="200" r="100" fill="url(%23grad)"/&gt;&lt;circle cx="800" cy="300" r="150" fill="url(%23grad)"/&gt;&lt;circle cx="600" cy="700" r="120" fill="url(%23grad)"/&gt;&lt;/svg&gt;') no-repeat center center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-size: cover;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.3;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 800px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero h1 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 700;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.2;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeInUp 1s ease-out;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.9;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeInUp 1s ease-out 0.3s both;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hero-buttons {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-wrap: wrap;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: fadeInUp 1s ease-out 0.6s both;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary, .btn-secondary {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-3px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.btn-secondary {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.btn-secondary:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-3px);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Services Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.services {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 5rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.services::before {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>content: '';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: url('data:image/svg+xml,&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"&gt;&lt;defs&gt;&lt;radialGradient id="grad2" cx="50%" cy="50%" r="50%"&gt;&lt;stop offset="0%" style="stop-color:rgba(255,255,255,0.05);stop-opacity:1" /&gt;&lt;stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /&gt;&lt;/radialGradient&gt;&lt;/defs&gt;&lt;circle cx="150" cy="150" r="80" fill="url(%23grad2)"/&gt;&lt;circle cx="850" cy="200" r="120" fill="url(%23grad2)"/&gt;&lt;circle cx="700" cy="800" r="100" fill="url(%23grad2)"/&gt;&lt;/svg&gt;') no-repeat center center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-size: cover;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.3;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.services .container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title h2 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-title p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.services-grid {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service-card {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service-card:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-10px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service-icon {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 80px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service-card h3 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.service-card p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* About Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.about {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 5rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.about-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 4rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.about-text h2 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-background-clip: text;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>-webkit-text-fill-color: transparent;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-clip: text;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.about-text p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.about-image {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 400px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Case Studies */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.case-studies {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 5rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #f8fafc;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.case-grid {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.case-card {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.case-card:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-10px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.case-image {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 200px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.case-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.case-content h3 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.3rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.case-content p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.case-results {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.result-item {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #f0f4ff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.5rem 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Blog Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blog {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 5rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blog-grid {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 3rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blog-card {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blog-card:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-5px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blog-image {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 180px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blog-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blog-meta {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #999;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blog-content h3 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.blog-content p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Contact Section */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.contact {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 5rem 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.contact-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: 1fr 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 4rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: start;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.contact-info h2 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.contact-info p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.9;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.contact-item {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.contact-item-icon {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.2);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-right: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.contact-form {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-group {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-group label {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-group input,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-group textarea {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.9);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-group input:focus,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-group textarea:focus {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>outline: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(1.02);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.form-group textarea {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 120px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>resize: vertical;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.submit-btn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 600;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.submit-btn:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Footer */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.footer {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #1a1a1a;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 3rem 0 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.footer-content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>gap: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.footer-section h3 {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.footer-section p,</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.footer-section a {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #ccc;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.8;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.footer-section a:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.footer-bottom {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-top: 1px solid #333;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding-top: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #999;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Animations */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes fadeInUp {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>from {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: translateY(30px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>to {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 1;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: translateY(0);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.fade-in {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(30px);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.8s ease;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.fade-in.visible {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(0);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Mobile Menu */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.mobile-menu-btn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.mobile-menu-btn span {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 25px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 3px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background: #333;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 3px 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: 0.3s;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Responsive Design */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.mobile-menu-btn {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.nav-menu {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>top: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>left: 0;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>background: white;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>padding: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.nav-menu.active {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.hero h1 {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 2.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.hero p {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 1.1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.hero-buttons {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>align-items: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.about-content,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.contact-content {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>gap: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.services-grid,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.case-grid,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.blog-grid {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>grid-template-columns: 1fr;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.nav-container {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>padding: 0 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.container {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>padding: 0 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.section-title h2 {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 480px) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.hero h1 {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 2rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.hero p {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 1rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.btn-primary,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.btn-secondary {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>padding: 0.8rem 1.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>font-size: 0.9rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>.service-card,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.case-card,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>.blog-card {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>margin: 0 0.5rem;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Header --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="header" id="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="nav-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="logo"&gt;SASURAI&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;nav class="nav-menu" id="nav-menu"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;a href="#home"&gt;ホーム&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;a href="#services"&gt;サービス&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;a href="#about"&gt;会社概要&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;a href="#case-studies"&gt;導入事例&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;a href="#blog"&gt;ブログ&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;a href="#contact"&gt;お問い合わせ&lt;/a&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/nav&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#contact" class="cta-button"&gt;無料相談&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="mobile-menu-btn" id="mobile-menu-btn"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;span&gt;&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Hero Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="hero" id="home"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="hero-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;AIが創る&lt;br&gt;進化し続けるWebサイト&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;従来の静的なWebサイトから、AIで自ら学習・最適化する&lt;br&gt;次世代のインテリジェントWebサイトへ&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="hero-buttons"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#contact" class="btn-primary"&gt;無料相談を始める&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;a href="#services" class="btn-secondary"&gt;サービス詳細&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Services Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="services" id="services"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="section-title fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2&gt;AI-Powered Intelligent Website&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;AIテクノロジーが実現する、自ら成長し続けるWebサイトソリューション&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Main Service Hero --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="main-service-hero fade-in" style="margin-top: 4rem; text-align: center; background: rgba(255, 255, 255, 0.1); padding: 4rem 2rem; border-radius: 30px; backdrop-filter: blur(10px);"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="max-width: 800px; margin: 0 auto;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 style="font-size: 2.5rem; color: white; margin-bottom: 1.5rem; font-weight: 700;"&gt;自己進化するWebサイト&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p style="font-size: 1.3rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; line-height: 1.8;"&gt;ユーザーの行動データをリアルタイムで学習し、コンテンツ・デザイン・ユーザー体験を自動最適化。人間の手を介さずに、継続的にパフォーマンスを向上させます。&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; margin: 3rem 0;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="text-align: center;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div style="font-size: 3rem; margin-bottom: 1rem;"&gt;🧠&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 style="color: white; margin-bottom: 0.5rem; font-weight: 600;"&gt;AI学習エンジン&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;"&gt;ユーザー行動を24/7分析&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="text-align: center;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div style="font-size: 3rem; margin-bottom: 1rem;"&gt;🔄&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 style="color: white; margin-bottom: 0.5rem; font-weight: 600;"&gt;自動最適化&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;"&gt;リアルタイムで改善実行&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="text-align: center;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div style="font-size: 3rem; margin-bottom: 1rem;"&gt;📊&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 style="color: white; margin-bottom: 0.5rem; font-weight: 600;"&gt;成果測定&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;"&gt;透明性の高いROI追跡&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="text-align: center;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div style="font-size: 3rem; margin-bottom: 1rem;"&gt;🚀&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h4 style="color: white; margin-bottom: 0.5rem; font-weight: 600;"&gt;継続成長&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;"&gt;終わりのない改善サイクル&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Service Features Grid --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 4rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="service-feature-card fade-in" style="background: rgba(255, 255, 255, 0.95); padding: 2.5rem; border-radius: 20px; text-align: left; backdrop-filter: blur(10px);"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span style="font-size: 1.5rem; color: white;"&gt;🎯&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333; font-weight: 600;"&gt;開発・設計&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p style="color: #666; line-height: 1.8; margin-bottom: 1rem;"&gt;AIアルゴリズムを組み込んだWebサイトの設計・開発。マシンラーニング機能を最初から搭載し、学習基盤を構築します。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul style="color: #666; font-size: 0.9rem; line-height: 1.6;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• ユーザー行動追跡システム&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• A/Bテスト自動化機能&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• パーソナライゼーションエンジン&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="service-feature-card fade-in" style="background: rgba(255, 255, 255, 0.95); padding: 2.5rem; border-radius: 20px; text-align: left; backdrop-filter: blur(10px);"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="width: 60px; height: 60px; background: linear-gradient(135deg, #4ecdc4 0%, #6bd5cd 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span style="font-size: 1.5rem; color: white;"&gt;⚡&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333; font-weight: 600;"&gt;提供・導入&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p style="color: #666; line-height: 1.8; margin-bottom: 1rem;"&gt;既存システムとのシームレスな統合と、段階的な導入プロセス。最小限のダウンタイムで次世代サイトを実現。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul style="color: #666; font-size: 0.9rem; line-height: 1.6;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• 既存データの移行・統合&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• 段階的リリース戦略&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• チーム向け操作研修&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="service-feature-card fade-in" style="background: rgba(255, 255, 255, 0.95); padding: 2.5rem; border-radius: 20px; text-align: left; backdrop-filter: blur(10px);"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="width: 60px; height: 60px; background: linear-gradient(135deg, #45b7d1 0%, #6cc5e0 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span style="font-size: 1.5rem; color: white;"&gt;🛡️&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333; font-weight: 600;"&gt;運用・保守&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p style="color: #666; line-height: 1.8; margin-bottom: 1rem;"&gt;AIシステムの継続監視と調整。セキュリティアップデートとパフォーマンス最適化を24/7体制でサポート。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul style="color: #666; font-size: 0.9rem; line-height: 1.6;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• 24/7システム監視&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• AIモデルの定期調整&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• セキュリティ強化&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="service-feature-card fade-in" style="background: rgba(255, 255, 255, 0.95); padding: 2.5rem; border-radius: 20px; text-align: left; backdrop-filter: blur(10px);"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span style="font-size: 1.5rem; color: white;"&gt;💡&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333; font-weight: 600;"&gt;コンサルティング&lt;/h4&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p style="color: #666; line-height: 1.8; margin-bottom: 1rem;"&gt;AI活用戦略の立案から効果測定まで。データドリブンな意思決定をサポートし、継続的な成長を実現。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul style="color: #666; font-size: 0.9rem; line-height: 1.6;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• AI戦略コンサルティング&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• パフォーマンス分析&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;• 成長戦略の最適化&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Performance Metrics --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="performance-metrics fade-in" style="margin-top: 4rem; text-align: center; background: rgba(255, 255, 255, 0.1); padding: 3rem 2rem; border-radius: 20px; backdrop-filter: blur(10px);"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 style="color: white; font-size: 1.8rem; margin-bottom: 2rem;"&gt;実証された成果&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;"&gt;285%&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p style="color: rgba(255, 255, 255, 0.8);"&gt;コンバージョン率向上&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;"&gt;67%&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p style="color: rgba(255, 255, 255, 0.8);"&gt;運用コスト削減&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;"&gt;24/7&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p style="color: rgba(255, 255, 255, 0.8);"&gt;自動最適化稼働&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;"&gt;∞&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p style="color: rgba(255, 255, 255, 0.8);"&gt;継続的成長&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- About Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="about" id="about"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="about-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="about-text fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2&gt;私たちについて&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;株式会社SASURAIは、AIテクノロジーを活用した次世代Webサイトの開発・提供を行う先進企業です。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;従来の静的なWebサイトから、AIが自ら学習し最適化する「生きているWebサイト」へのパラダイムシフトを牽引しています。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;私たちは単なる技術提供者ではなく、お客様のデジタル変革を共に実現するパートナーとして、持続的な価値創造を目指しています。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;a href="#contact" class="btn-primary"&gt;詳しく見る&lt;/a&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="about-image fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;私たちのミッション&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;AIテクノロジーで&lt;br&gt;すべてのWebサイトに&lt;br&gt;生命を吹き込む&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Case Studies Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="case-studies" id="case-studies"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="section-title fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2&gt;導入事例&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;様々な業界のクライアント様の成功事例をご紹介します&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="case-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="case-card fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="case-image"&gt;製造業A社 様&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="case-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;BtoB製造業のAI化プロジェクト&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;従来のWebサイトをAI駆動型にリニューアル。ユーザー行動に基づく自動コンテンツ最適化により、問い合わせ品質が大幅向上。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="case-results"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="result-item"&gt;問い合わせ285%増&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="result-item"&gt;売上180%向上&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="case-card fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="case-image"&gt;小売業B社 様&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="case-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;ECサイトのパーソナライゼーション&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;AI学習エンジンによる個別最適化でユーザー体験を革新。購買行動データから自動でレコメンド精度を向上。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="case-results"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="result-item"&gt;売上250%増&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="result-item"&gt;CV率3.2倍&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="case-card fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="case-image"&gt;サービス業C社 様&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="case-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;AI powered マーケティング自動化&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Webサイトが自動でA/Bテストを実行し、最適なコンテンツを配信。人的リソース削減と成果向上を同時達成。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="case-results"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="result-item"&gt;運用コスト67%削減&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="result-item"&gt;リード品質向上&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Blog Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="blog" id="blog"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="section-title fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2&gt;ブログ・コラム&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;AIテクノロジーとWebサイト最適化に関する最新情報とノウハウをお届けします&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="blog-grid"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;article class="blog-card fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-image"&gt;AI Web最適化ガイド&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="blog-meta"&gt;2024年9月10日 | AI・マーケティング&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;2024年版 AIによるWebサイト自動最適化の基本&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;機械学習を活用したWebサイトの自動改善について、導入から効果測定まで詳しく解説します。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/article&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;article class="blog-card fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-image"&gt;パーソナライゼーション&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="blog-meta"&gt;2024年9月8日 | UX・AI&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;AIパーソナライゼーションで実現する次世代UX&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;ユーザー一人一人に最適化されたWebエクスペリエンスの設計方法と成功事例をご紹介します。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/article&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;article class="blog-card fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-image"&gt;データ分析活用&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="blog-meta"&gt;2024年9月5日 | データ活用&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;AIが変える今後のWebアナリティクス&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;従来のアクセス解析を超えた、AIによる予測分析とリアルタイム最適化の活用法を解説します。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/article&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;article class="blog-card fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-image"&gt;自動A/Bテスト&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="blog-meta"&gt;2024年9月3日 | テスト自動化&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;AIによる自動A/Bテストで効率的な改善を実現&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;人の手を介さずにWebサイトが自ら最適解を見つける、次世代テスト手法をご紹介します。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/article&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;article class="blog-card fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-image"&gt;ROI最大化戦略&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="blog-meta"&gt;2024年9月1日 | 投資対効果&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;AI投資のROI最大化：導入から成果測定まで&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;AIWebサイト導入における投資対効果の算出方法と、継続的な価値創造のポイントを解説します。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/article&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;article class="blog-card fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-image"&gt;未来のWeb体験&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="blog-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="blog-meta"&gt;2024年8月28日 | 技術トレンド&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;2025年のWebサイトはどう進化するか&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;AI、機械学習、IoTが融合した次世代Webエクスペリエンスの可能性を探ります。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/article&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Contact Section --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;section class="contact" id="contact"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="contact-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="contact-info fade-in"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2&gt;お問い合わせ&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;AIWebサイトプロジェクトのご相談や無料診断など、お気軽にお問い合わせください。専門のコンサルタントが対応いたします。&lt;/p&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="contact-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="contact-item-icon"&gt;📞&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;strong&gt;電話&lt;/strong&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>03-1234-5678&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;small&gt;平日 9:00-18:00&lt;/small&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="contact-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="contact-item-icon"&gt;✉️&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;strong&gt;メール&lt;/strong&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>info@sasurai.co.jp&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;small&gt;24時間受付&lt;/small&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="contact-item"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="contact-item-icon"&gt;📍&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;strong&gt;所在地&lt;/strong&gt;&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>東京都渋谷区〇〇1-2-3&lt;br&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;small&gt;〇〇ビル 5F&lt;/small&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;form class="contact-form fade-in" id="contact-form"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="company"&gt;会社名 *&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="company" name="company" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="name"&gt;お名前 *&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="name" name="name" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="email"&gt;メールアドレス *&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="email" id="email" name="email" required&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="phone"&gt;電話番号&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="tel" id="phone" name="phone"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="service"&gt;ご相談内容&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="service" name="service" style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255, 255, 255, 0.9); font-size: 1rem;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value=""&gt;選択してください&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="ai-website"&gt;AIWebサイト開発&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="optimization"&gt;自動最適化システム&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="consulting"&gt;AIコンサルティング&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="maintenance"&gt;運用・保守サービス&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="migration"&gt;既存サイトAI化&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="other"&gt;その他&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="message"&gt;詳細・ご要望&lt;/label&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;textarea id="message" name="message" placeholder="プロジェクトの詳細やご要望をお聞かせください"&gt;&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="submit" class="submit-btn"&gt;無料相談を申し込む&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/form&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Footer --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;footer class="footer"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="footer-content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="footer-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;SASURAI&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービスを提供します。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;お客様と共に、次世代のWebエクスペリエンスを創造します。&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="footer-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;サービス&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;a href="#services"&gt;AI Webサイト開発&lt;/a&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;a href="#services"&gt;システム導入支援&lt;/a&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;a href="#services"&gt;運用・保守サービス&lt;/a&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;a href="#services"&gt;AIコンサルティング&lt;/a&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;a href="#services"&gt;パフォーマンス分析&lt;/a&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="footer-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;会社情報&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;a href="#about"&gt;会社概要&lt;/a&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;a href="#case-studies"&gt;導入事例&lt;/a&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;a href="#blog"&gt;ブログ&lt;/a&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;a href="#contact"&gt;お問い合わせ&lt;/a&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;&lt;a href="#"&gt;プライバシーポリシー&lt;/a&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="footer-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;お問い合わせ&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;📞 03-1234-5678&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;✉️ info@sasurai.co.jp&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;📍 東京都渋谷区〇〇1-2-3&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;🕐 平日 9:00-18:00&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="footer-bottom"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;&amp;copy; 2024 株式会社SASURAI. All rights reserved.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Header scroll effect</p>
-<p class="p1"><span class="Apple-converted-space">        </span>window.addEventListener('scroll', function() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const header = document.getElementById('header');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (window.scrollY &gt; 100) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>header.classList.add('scrolled');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>header.classList.remove('scrolled');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Mobile menu toggle</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const mobileMenuBtn = document.getElementById('mobile-menu-btn');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const navMenu = document.getElementById('nav-menu');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>mobileMenuBtn.addEventListener('click', function() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>navMenu.classList.toggle('active');</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Animate mobile menu button</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const spans = mobileMenuBtn.querySelectorAll('span');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (navMenu.classList.contains('active')) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>spans[1].style.opacity = '0';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>spans[0].style.transform = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>spans[1].style.opacity = '1';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>spans[2].style.transform = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Smooth scrolling for navigation links</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>anchor.addEventListener('click', function (e) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>e.preventDefault();</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const target = document.querySelector(this.getAttribute('href'));</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (target) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>target.scrollIntoView({</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>behavior: 'smooth',</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>block: 'start'</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>});</p>
-<p class="p2"><span class="Apple-converted-space">                    </span></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>// Close mobile menu if open</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>navMenu.classList.remove('active');</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>const spans = mobileMenuBtn.querySelectorAll('span');</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>spans[0].style.transform = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>spans[1].style.opacity = '1';</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>spans[2].style.transform = 'none';</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Intersection Observer for fade-in animations</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const observerOptions = {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>threshold: 0.1,</p>
-<p class="p1"><span class="Apple-converted-space">            </span>rootMargin: '0px 0px -50px 0px'</p>
-<p class="p1"><span class="Apple-converted-space">        </span>};</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>const observer = new IntersectionObserver(function(entries) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>entries.forEach(entry =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>if (entry.isIntersecting) {</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>entry.target.classList.add('visible');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}, observerOptions);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Observe all fade-in elements</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('.fade-in').forEach(el =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>observer.observe(el);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Contact form handling</p>
-<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('contact-form').addEventListener('submit', function(e) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>e.preventDefault();</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Get form data</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const formData = new FormData(this);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const data = Object.fromEntries(formData);</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Basic validation</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (!data.company || !data.name || !data.email) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>alert('必須項目を入力してください。');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Email validation</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (!emailRegex.test(data.email)) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>alert('正しいメールアドレスを入力してください。');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Simulate form submission</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const submitBtn = this.querySelector('.submit-btn');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const originalText = submitBtn.textContent;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>submitBtn.textContent = '送信中...';</p>
-<p class="p1"><span class="Apple-converted-space">            </span>submitBtn.disabled = true;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Simulate API call</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>alert('お問い合わせありがとうございます。\n担当者より2営業日以内にご連絡いたします。');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>this.reset();</p>
-<p class="p1"><span class="Apple-converted-space">                </span>submitBtn.textContent = originalText;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>submitBtn.disabled = false;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}, 2000);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">SASURAI</div>
+            <nav class="nav-menu" id="nav-menu">
+                <li><a href="#home">ホーム</a></li>
+                <li><a href="#services">サービス</a></li>
+                <li><a href="#about">会社概要</a></li>
+                <li><a href="#case-studies">導入事例</a></li>
+                <li><a href="#blog">ブログ</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </nav>
+            <a href="#contact" class="cta-button">無料相談</a>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>AIが創る<br>進化し続けるWebサイト</h1>
+            <p>従来の静的なWebサイトから、AIで自ら学習・最適化する<br>次世代のインテリジェントWebサイトへ</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">無料相談を始める</a>
+                <a href="#services" class="btn-secondary">サービス詳細</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>AI-Powered Intelligent Website</h2>
+                <p>AIテクノロジーが実現する、自ら成長し続けるWebサイトソリューション</p>
+            </div>
+            
+            <!-- Main Service Hero -->
+            <div class="main-service-hero fade-in" style="margin-top: 4rem; text-align: center; background: rgba(255, 255, 255, 0.1); padding: 4rem 2rem; border-radius: 30px; backdrop-filter: blur(10px);">
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <h3 style="font-size: 2.5rem; color: white; margin-bottom: 1.5rem; font-weight: 700;">自己進化するWebサイト</h3>
+                    <p style="font-size: 1.3rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; line-height: 1.8;">ユーザーの行動データをリアルタイムで学習し、コンテンツ・デザイン・ユーザー体験を自動最適化。人間の手を介さずに、継続的にパフォーマンスを向上させます。</p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🧠</div>
+                            <h4 style="color: white; margin-bottom: 0.5rem; font-weight: 600;">AI学習エンジン</h4>
+                            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">ユーザー行動を24/7分析</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🔄</div>
+                            <h4 style="color: white; margin-bottom: 0.5rem; font-weight: 600;">自動最適化</h4>
+                            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">リアルタイムで改善実行</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">📊</div>
+                            <h4 style="color: white; margin-bottom: 0.5rem; font-weight: 600;">成果測定</h4>
+                            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">透明性の高いROI追跡</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+                            <h4 style="color: white; margin-bottom: 0.5rem; font-weight: 600;">継続成長</h4>
+                            <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.9rem;">終わりのない改善サイクル</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Features Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                <div class="service-feature-card fade-in" style="background: rgba(255, 255, 255, 0.95); padding: 2.5rem; border-radius: 20px; text-align: left; backdrop-filter: blur(10px);">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <span style="font-size: 1.5rem; color: white;">🎯</span>
+                    </div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333; font-weight: 600;">開発・設計</h4>
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">AIアルゴリズムを組み込んだWebサイトの設計・開発。マシンラーニング機能を最初から搭載し、学習基盤を構築します。</p>
+                    <ul style="color: #666; font-size: 0.9rem; line-height: 1.6;">
+                        <li>• ユーザー行動追跡システム</li>
+                        <li>• A/Bテスト自動化機能</li>
+                        <li>• パーソナライゼーションエンジン</li>
+                    </ul>
+                </div>
+
+                <div class="service-feature-card fade-in" style="background: rgba(255, 255, 255, 0.95); padding: 2.5rem; border-radius: 20px; text-align: left; backdrop-filter: blur(10px);">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #4ecdc4 0%, #6bd5cd 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <span style="font-size: 1.5rem; color: white;">⚡</span>
+                    </div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333; font-weight: 600;">提供・導入</h4>
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">既存システムとのシームレスな統合と、段階的な導入プロセス。最小限のダウンタイムで次世代サイトを実現。</p>
+                    <ul style="color: #666; font-size: 0.9rem; line-height: 1.6;">
+                        <li>• 既存データの移行・統合</li>
+                        <li>• 段階的リリース戦略</li>
+                        <li>• チーム向け操作研修</li>
+                    </ul>
+                </div>
+
+                <div class="service-feature-card fade-in" style="background: rgba(255, 255, 255, 0.95); padding: 2.5rem; border-radius: 20px; text-align: left; backdrop-filter: blur(10px);">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #45b7d1 0%, #6cc5e0 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <span style="font-size: 1.5rem; color: white;">🛡️</span>
+                    </div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333; font-weight: 600;">運用・保守</h4>
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">AIシステムの継続監視と調整。セキュリティアップデートとパフォーマンス最適化を24/7体制でサポート。</p>
+                    <ul style="color: #666; font-size: 0.9rem; line-height: 1.6;">
+                        <li>• 24/7システム監視</li>
+                        <li>• AIモデルの定期調整</li>
+                        <li>• セキュリティ強化</li>
+                    </ul>
+                </div>
+
+                <div class="service-feature-card fade-in" style="background: rgba(255, 255, 255, 0.95); padding: 2.5rem; border-radius: 20px; text-align: left; backdrop-filter: blur(10px);">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <span style="font-size: 1.5rem; color: white;">💡</span>
+                    </div>
+                    <h4 style="font-size: 1.3rem; margin-bottom: 1rem; color: #333; font-weight: 600;">コンサルティング</h4>
+                    <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">AI活用戦略の立案から効果測定まで。データドリブンな意思決定をサポートし、継続的な成長を実現。</p>
+                    <ul style="color: #666; font-size: 0.9rem; line-height: 1.6;">
+                        <li>• AI戦略コンサルティング</li>
+                        <li>• パフォーマンス分析</li>
+                        <li>• 成長戦略の最適化</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="performance-metrics fade-in" style="margin-top: 4rem; text-align: center; background: rgba(255, 255, 255, 0.1); padding: 3rem 2rem; border-radius: 20px; backdrop-filter: blur(10px);">
+                <h3 style="color: white; font-size: 1.8rem; margin-bottom: 2rem;">実証された成果</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">285%</div>
+                        <p style="color: rgba(255, 255, 255, 0.8);">コンバージョン率向上</p>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">67%</div>
+                        <p style="color: rgba(255, 255, 255, 0.8);">運用コスト削減</p>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">24/7</div>
+                        <p style="color: rgba(255, 255, 255, 0.8);">自動最適化稼働</p>
+                    </div>
+                    <div>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">∞</div>
+                        <p style="color: rgba(255, 255, 255, 0.8);">継続的成長</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>私たちについて</h2>
+                    <p>株式会社SASURAIは、AIテクノロジーを活用した次世代Webサイトの開発・提供を行う先進企業です。</p>
+                    <p>従来の静的なWebサイトから、AIが自ら学習し最適化する「生きているWebサイト」へのパラダイムシフトを牽引しています。</p>
+                    <p>私たちは単なる技術提供者ではなく、お客様のデジタル変革を共に実現するパートナーとして、持続的な価値創造を目指しています。</p>
+                    <a href="#contact" class="btn-primary">詳しく見る</a>
+                </div>
+                <div class="about-image fade-in">
+                    <div>
+                        <h3>私たちのミッション</h3>
+                        <p>AIテクノロジーで<br>すべてのWebサイトに<br>生命を吹き込む</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies" id="case-studies">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>導入事例</h2>
+                <p>様々な業界のクライアント様の成功事例をご紹介します</p>
+            </div>
+            <div class="case-grid">
+                <div class="case-card fade-in">
+                    <div class="case-image">製造業A社 様</div>
+                    <div class="case-content">
+                        <h3>BtoB製造業のAI化プロジェクト</h3>
+                        <p>従来のWebサイトをAI駆動型にリニューアル。ユーザー行動に基づく自動コンテンツ最適化により、問い合わせ品質が大幅向上。</p>
+                        <div class="case-results">
+                            <span class="result-item">問い合わせ285%増</span>
+                            <span class="result-item">売上180%向上</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card fade-in">
+                    <div class="case-image">小売業B社 様</div>
+                    <div class="case-content">
+                        <h3>ECサイトのパーソナライゼーション</h3>
+                        <p>AI学習エンジンによる個別最適化でユーザー体験を革新。購買行動データから自動でレコメンド精度を向上。</p>
+                        <div class="case-results">
+                            <span class="result-item">売上250%増</span>
+                            <span class="result-item">CV率3.2倍</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card fade-in">
+                    <div class="case-image">サービス業C社 様</div>
+                    <div class="case-content">
+                        <h3>AI powered マーケティング自動化</h3>
+                        <p>Webサイトが自動でA/Bテストを実行し、最適なコンテンツを配信。人的リソース削減と成果向上を同時達成。</p>
+                        <div class="case-results">
+                            <span class="result-item">運用コスト67%削減</span>
+                            <span class="result-item">リード品質向上</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>ブログ・コラム</h2>
+                <p>AIテクノロジーとWebサイト最適化に関する最新情報とノウハウをお届けします</p>
+            </div>
+            <div class="blog-grid">
+                <article class="blog-card fade-in">
+                    <div class="blog-image">AI Web最適化ガイド</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">2024年9月10日 | AI・マーケティング</div>
+                        <h3>2024年版 AIによるWebサイト自動最適化の基本</h3>
+                        <p>機械学習を活用したWebサイトの自動改善について、導入から効果測定まで詳しく解説します。</p>
+                    </div>
+                </article>
+                <article class="blog-card fade-in">
+                    <div class="blog-image">パーソナライゼーション</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">2024年9月8日 | UX・AI</div>
+                        <h3>AIパーソナライゼーションで実現する次世代UX</h3>
+                        <p>ユーザー一人一人に最適化されたWebエクスペリエンスの設計方法と成功事例をご紹介します。</p>
+                    </div>
+                </article>
+                <article class="blog-card fade-in">
+                    <div class="blog-image">データ分析活用</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">2024年9月5日 | データ活用</div>
+                        <h3>AIが変える今後のWebアナリティクス</h3>
+                        <p>従来のアクセス解析を超えた、AIによる予測分析とリアルタイム最適化の活用法を解説します。</p>
+                    </div>
+                </article>
+                <article class="blog-card fade-in">
+                    <div class="blog-image">自動A/Bテスト</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">2024年9月3日 | テスト自動化</div>
+                        <h3>AIによる自動A/Bテストで効率的な改善を実現</h3>
+                        <p>人の手を介さずにWebサイトが自ら最適解を見つける、次世代テスト手法をご紹介します。</p>
+                    </div>
+                </article>
+                <article class="blog-card fade-in">
+                    <div class="blog-image">ROI最大化戦略</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">2024年9月1日 | 投資対効果</div>
+                        <h3>AI投資のROI最大化：導入から成果測定まで</h3>
+                        <p>AIWebサイト導入における投資対効果の算出方法と、継続的な価値創造のポイントを解説します。</p>
+                    </div>
+                </article>
+                <article class="blog-card fade-in">
+                    <div class="blog-image">未来のWeb体験</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">2024年8月28日 | 技術トレンド</div>
+                        <h3>2025年のWebサイトはどう進化するか</h3>
+                        <p>AI、機械学習、IoTが融合した次世代Webエクスペリエンスの可能性を探ります。</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h2>お問い合わせ</h2>
+                    <p>AIWebサイトプロジェクトのご相談や無料診断など、お気軽にお問い合わせください。専門のコンサルタントが対応いたします。</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div>
+                            <strong>電話</strong><br>
+                            03-1234-5678<br>
+                            <small>平日 9:00-18:00</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div>
+                            <strong>メール</strong><br>
+                            info@sasurai.co.jp<br>
+                            <small>24時間受付</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <strong>所在地</strong><br>
+                            東京都渋谷区〇〇1-2-3<br>
+                            <small>〇〇ビル 5F</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form fade-in" id="contact-form">
+                    <div class="form-group">
+                        <label for="company">会社名 *</label>
+                        <input type="text" id="company" name="company" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="name">お名前 *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">メールアドレス *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">電話番号</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">ご相談内容</label>
+                        <select id="service" name="service" style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255, 255, 255, 0.9); font-size: 1rem;">
+                            <option value="">選択してください</option>
+                            <option value="ai-website">AIWebサイト開発</option>
+                            <option value="optimization">自動最適化システム</option>
+                            <option value="consulting">AIコンサルティング</option>
+                            <option value="maintenance">運用・保守サービス</option>
+                            <option value="migration">既存サイトAI化</option>
+                            <option value="other">その他</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">詳細・ご要望</label>
+                        <textarea id="message" name="message" placeholder="プロジェクトの詳細やご要望をお聞かせください"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">無料相談を申し込む</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SASURAI</h3>
+                    <p>AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービスを提供します。</p>
+                    <p>お客様と共に、次世代のWebエクスペリエンスを創造します。</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>サービス</h3>
+                    <p><a href="#services">AI Webサイト開発</a></p>
+                    <p><a href="#services">システム導入支援</a></p>
+                    <p><a href="#services">運用・保守サービス</a></p>
+                    <p><a href="#services">AIコンサルティング</a></p>
+                    <p><a href="#services">パフォーマンス分析</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>会社情報</h3>
+                    <p><a href="#about">会社概要</a></p>
+                    <p><a href="#case-studies">導入事例</a></p>
+                    <p><a href="#blog">ブログ</a></p>
+                    <p><a href="#contact">お問い合わせ</a></p>
+                    <p><a href="#">プライバシーポリシー</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>お問い合わせ</h3>
+                    <p>📞 03-1234-5678</p>
+                    <p>✉️ info@sasurai.co.jp</p>
+                    <p>📍 東京都渋谷区〇〇1-2-3</p>
+                    <p>🕐 平日 9:00-18:00</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 株式会社SASURAI. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            
+            // Animate mobile menu button
+            const spans = mobileMenuBtn.querySelectorAll('span');
+            if (navMenu.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                    const spans = mobileMenuBtn.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Basic validation
+            if (!data.company || !data.name || !data.email) {
+                alert('必須項目を入力してください。');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('正しいメールアドレスを入力してください。');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = '送信中...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert('お問い合わせありがとうございます。\n担当者より2営業日以内にご連絡いたします。');
+                this.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
