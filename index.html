@@ -400,6 +400,9 @@
             color: #1f3fb3;
             border-color: #1f3fb3;
         }
+        .blog-tabs .blog-tab {
+            font-size: 1.3rem;
+        }
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -584,6 +587,22 @@
             color: #999;
         }
 
+        /* Pre-Footer CTA (Unified) */
+        .prefooter-cta { padding: 4rem 0; background: linear-gradient(135deg, rgba(102,126,234,.08), rgba(118,75,162,.08)); }
+        .prefooter-cta .cta-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .prefooter-cta .lead { display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items:center; margin-bottom: 1.5rem; }
+        .prefooter-cta .lead h2 { margin:0; font-size: 1.8rem; font-weight: 800; color:#0f172a; }
+        .prefooter-cta .lead p { margin:0; color:#475569; line-height:1.8; }
+        .prefooter-cta .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.25rem; }
+        .prefooter-cta .cta-card { border-radius: 20px; padding: 2.5rem 2rem; color:#fff; text-decoration:none; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; box-shadow:0 12px 30px rgba(0,0,0,.12); transition: transform .2s ease, box-shadow .2s ease; text-align:center; }
+        .prefooter-cta .cta-card:hover { transform: translateY(-3px); box-shadow:0 18px 44px rgba(0,0,0,.18); }
+        .prefooter-cta .card-dark { background:#1f2937; }
+        .prefooter-cta .card-blue { background:#0B5BD3; }
+        @media (max-width: 900px){
+            .prefooter-cta .lead { grid-template-columns: 1fr; gap: .75rem; }
+            .prefooter-cta .grid { grid-template-columns: 1fr; }
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -709,7 +728,7 @@
                 <li><a href="#services">サービス</a></li>
                 <li><a href="#about">会社概要</a></li>
                 <li><a href="#case-studies">導入事例</a></li>
-                <li><a href="#blog">ブログ</a></li>
+                <li><a href="contents.html">お役立ちコンテンツ</a></li>
                 <li><a href="#contact">お問い合わせ</a></li>
             </nav>
             <a href="#contact" class="cta-button">無料相談</a>
@@ -917,83 +936,15 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info fade-in">
-                    <h2>お問い合わせ</h2>
-                    <p>AIWebサイトプロジェクトのご相談や無料診断など、お気軽にお問い合わせください。専門のコンサルタントが対応いたします。</p>
-                    
-                    <div class="contact-item">
-                        <div class="contact-item-icon">📞</div>
-                        <div>
-                            <strong>電話</strong><br>
-                            03-1234-5678<br>
-                            <small>平日 9:00-18:00</small>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-item-icon">✉️</div>
-                        <div>
-                            <strong>メール</strong><br>
-                            info@sasurai.co.jp<br>
-                            <small>24時間受付</small>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-item-icon">📍</div>
-                        <div>
-                            <strong>所在地</strong><br>
-                            東京都渋谷区〇〇1-2-3<br>
-                            <small>〇〇ビル 5F</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form fade-in" id="contact-form">
-                    <div class="form-group">
-                        <label for="company">会社名 *</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="name">お名前 *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">メールアドレス *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">電話番号</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">ご相談内容</label>
-                        <select id="service" name="service" style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255, 255, 255, 0.9); font-size: 1rem;">
-                            <option value="">選択してください</option>
-                            <option value="ai-website">AIWebサイト開発</option>
-                            <option value="optimization">自動最適化システム</option>
-                            <option value="consulting">AIコンサルティング</option>
-                            <option value="maintenance">運用・保守サービス</option>
-                            <option value="migration">既存サイトAI化</option>
-                            <option value="other">その他</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">詳細・ご要望</label>
-                        <textarea id="message" name="message" placeholder="プロジェクトの詳細やご要望をお聞かせください"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">無料相談を申し込む</button>
-                </form>
+    <section class="prefooter-cta" aria-label="行動喚起">
+        <div class="cta-wrap">
+            <div class="lead">
+                <h2>デジタルマーケティングのお悩み、まずはお気軽にご相談ください。</h2>
+                <p>SASURAIがお客様と共に考え、最適な解決の方向性をディスカッションを通じて見つけ出します。サービス詳細は資料でもご確認いただけます。</p>
+            </div>
+            <div class="grid">
+                <a class="cta-card card-dark" href="#trial">まずは無料体験をしてみる</a>
+                <a class="cta-card card-blue" href="#contact">まずは相談してみる</a>
             </div>
         </div>
     </section>
@@ -1021,7 +972,7 @@
                     <h3>会社情報</h3>
                     <p><a href="#about">会社概要</a></p>
                     <p><a href="#case-studies">導入事例</a></p>
-                    <p><a href="#blog">ブログ</a></p>
+                    <p><a href="contents.html">お役立ちコンテンツ</a></p>
                     <p><a href="#contact">お問い合わせ</a></p>
                     <p><a href="#">プライバシーポリシー</a></p>
                 </div>

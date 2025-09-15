@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>お役立ちコンテンツ一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        :root { --brand: #1f3fb3; --muted:#6b7280; }
+        * { box-sizing: border-box; }
+        body { font-family: Inter, system-ui, -apple-system, sans-serif; margin: 0; color:#0f172a; }
+        header { position: sticky; top:0; background:white; border-bottom:1px solid #e5e7eb; z-index:10; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+        .header-inner { display:flex; align-items:center; justify-content:space-between; height:64px; }
+        .title { font-weight: 800; letter-spacing: .02em; }
+        .controls { display:flex; gap: .75rem; padding: 1rem 0; flex-wrap: wrap; }
+        .search { flex: 1 1 320px; display:flex; align-items:center; gap:.5rem; border:1px solid #e5e7eb; border-radius: 10px; padding:.6rem .8rem; }
+        .search input { appearance:none; border:none; outline:none; width:100%; font-size: 1rem; }
+        .tags { display:flex; gap:.5rem; flex-wrap:wrap; }
+        .tag { padding:.4rem .7rem; border:1px solid #e5e7eb; border-radius:999px; font-size:.85rem; color:#374151; background:white; cursor:pointer; }
+        .tag.active { color:white; background:var(--brand); border-color:var(--brand); }
+        .grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:1.2rem; padding: 1rem 0 3rem; }
+        .card { background:white; border-radius:14px; overflow:hidden; box-shadow:0 6px 16px rgba(0,0,0,.08); transition: transform .2s ease, box-shadow .2s ease; }
+        .card:hover { transform: translateY(-3px); box-shadow:0 12px 28px rgba(0,0,0,.12); }
+        .thumb { height: 150px; background: linear-gradient(135deg, #667eea, #764ba2); display:flex; align-items:center; justify-content:center; color:white; font-weight:600; }
+        .body { padding:1rem; }
+        .meta { color: var(--muted); font-size:.85rem; margin-bottom:.35rem; }
+        .body h3 { font-size:1.05rem; margin:.15rem 0 .5rem; line-height:1.5; }
+        .body p { color:#475569; font-size:.9rem; line-height:1.6; }
+        .pill { display:inline-block; margin-top:.5rem; padding:.2rem .5rem; border-radius:999px; background:#eef2ff; color:#3730a3; font-size:.75rem; }
+        footer { border-top:1px solid #e5e7eb; padding:1.25rem 0; color:#64748b; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container header-inner">
+        <div class="title">お役立ちコンテンツ</div>
+        <a href="./" style="color:var(--brand); text-decoration:none; font-weight:600">Topへ戻る</a>
+    </div>
+</header>
+
+<main class="container">
+    <div class="controls">
+        <label class="search" aria-label="検索">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.2-4.2" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="#94a3b8" stroke-width="2"/></svg>
+            <input id="q" type="search" placeholder="キーワード検索（例：AI 最適化 UX）" />
+        </label>
+        <div class="tags" id="tags"></div>
+    </div>
+
+    <section id="results" class="grid" aria-live="polite"></section>
+</main>
+
+<footer>
+    <div class="container">© SASURAI Resources</div>
+</footer>
+
+<script>
+// コンテンツ定義（既存トップのカードと同等の粒度）
+const ITEMS = [
+  { id:'ai-opt', title:'2024年版 AIによるWebサイト自動最適化の基本', date:'2024-09-10', cat:'AI・マーケティング', tags:['AI','最適化','マーケ'], desc:'機械学習を活用したWebサイトの自動改善を導入から効果測定まで解説', thumb:'AI Web最適化ガイド', url:'#' },
+  { id:'ux-personal', title:'AIパーソナライゼーションで実現する次世代UX', date:'2024-09-08', cat:'UX・AI', tags:['UX','パーソナライズ','AI'], desc:'ユーザー別最適化の設計方法と成功事例', thumb:'パーソナライゼーション', url:'#' },
+  { id:'analytics', title:'AIが変える今後のWebアナリティクス', date:'2024-09-05', cat:'データ活用', tags:['分析','データ','AI'], desc:'予測分析とリアルタイム最適化の活用法', thumb:'データ分析活用', url:'#' },
+  { id:'abtest', title:'AIによる自動A/Bテストで効率的な改善を実現', date:'2024-09-03', cat:'テスト自動化', tags:['テスト','自動化'], desc:'人手を介さず継続改善する枠組み', thumb:'自動A/Bテスト', url:'#' },
+  { id:'roi', title:'AI投資のROI最大化：導入から成果測定まで', date:'2024-09-01', cat:'投資対効果', tags:['ROI','投資','評価'], desc:'投資対効果の算出方法と価値創造のポイント', thumb:'ROI最大化戦略', url:'#' },
+  { id:'future', title:'2025年のWebサイトはどう進化するか', date:'2024-08-28', cat:'技術トレンド', tags:['将来','トレンド'], desc:'AI・機械学習・IoT融合の可能性', thumb:'未来のWeb体験', url:'#' },
+];
+
+// タグ一覧を生成
+const UNIQUE_TAGS = Array.from(new Set(ITEMS.flatMap(i=>i.tags))).sort();
+const tagsEl = document.getElementById('tags');
+let activeTags = new Set();
+UNIQUE_TAGS.forEach(t=>{
+  const btn = document.createElement('button');
+  btn.className='tag';
+  btn.textContent = t;
+  btn.onclick = ()=>{ btn.classList.toggle('active'); btn.classList.contains('active') ? activeTags.add(t) : activeTags.delete(t); render(); };
+  tagsEl.appendChild(btn);
+});
+
+// 検索とフィルタ
+const qEl = document.getElementById('q');
+qEl.addEventListener('input', render);
+
+function match(item){
+  const q = qEl.value.trim().toLowerCase();
+  const hitQ = !q || [item.title, item.desc, item.cat, ...(item.tags||[])].join(' ').toLowerCase().includes(q);
+  const hitTag = activeTags.size===0 || item.tags.some(t=>activeTags.has(t));
+  return hitQ && hitTag;
+}
+
+function card(item){
+  const el = document.createElement('article');
+  el.className='card';
+  el.innerHTML = `
+    <a class="thumb" href="${item.url}">${item.thumb}</a>
+    <div class="body">
+      <div class="meta">${fmt(item.date)} | ${item.cat}</div>
+      <h3><a href="${item.url}">${item.title}</a></h3>
+      <p>${item.desc}</p>
+      ${item.tags.map(t=>`<span class="pill">#${t}</span>`).join(' ')}
+    </div>
+  `;
+  return el;
+}
+
+function fmt(d){
+  const dt = new Date(d); return `${dt.getFullYear()}年${('0'+(dt.getMonth()+1)).slice(-2)}月${('0'+dt.getDate()).slice(-2)}日`;
+}
+
+function render(){
+  const list = document.getElementById('results');
+  list.innerHTML='';
+  ITEMS.filter(match).forEach(i=>list.appendChild(card(i)));
+}
+render();
+</script>
+</body>
+</html> 
