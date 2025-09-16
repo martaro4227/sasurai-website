@@ -29,7 +29,20 @@
     }
     </script>
     
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <style>
+        :root{
+          --primary:#131c32; /* deep navy */
+          --surface:#0b1220;
+          --surface-2:#0f1830;
+          --text-light:#e5e7eb;
+          --muted-light:#94a3b8;
+          --text-dark:#0f172a;
+          --accent1:#60a5fa; /* sky */
+          --accent2:#22d3ee; /* cyan */
+        }
         * {
             margin: 0;
             padding: 0;
@@ -37,10 +50,11 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #111827;
             overflow-x: hidden;
+            background: linear-gradient(180deg, #0b1220 0%, #0f1830 30%, #0b1220 100%);
         }
 
         /* Header */
@@ -48,16 +62,15 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: #101d32;
             z-index: 1000;
             padding: 1rem 0;
-            transition: all 0.3s ease;
+            transition: none;
         }
 
         .header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: #101d32;
+            box-shadow: none;
         }
 
         .nav-container {
@@ -70,12 +83,13 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-size: 1.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #60a5fa 0%, #22d3ee 50%, #60a5fa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing:.02em;
         }
 
         .nav-menu {
@@ -86,15 +100,13 @@
 
         .nav-menu a {
             text-decoration: none;
-            color: #333;
-            font-weight: 500;
+            color: #e5e7eb;
+            font-weight: 600;
             transition: color 0.3s ease;
             position: relative;
         }
 
-        .nav-menu a:hover {
-            color: #667eea;
-        }
+        .nav-menu a:hover { color: var(--accent1); }
 
         .nav-menu a::after {
             content: '';
@@ -103,7 +115,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
             transition: width 0.3s ease;
         }
 
@@ -112,7 +124,7 @@
         }
 
         .cta-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
@@ -129,7 +141,9 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: radial-gradient(800px 300px at 20% 0%, rgba(96,165,250,.18), transparent 60%),
+                        radial-gradient(800px 300px at 80% 100%, rgba(34,211,238,.18), transparent 60%),
+                        linear-gradient(135deg, #0b1220 0%, #0f1830 50%, #0b1220 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -215,7 +229,7 @@
         /* Services Section */
         .services {
             padding: 5rem 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #1e2a4a 100%);
             position: relative;
             overflow: hidden;
         }
@@ -453,7 +467,7 @@
         /* Contact Section */
         .contact {
             padding: 5rem 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #1e2a4a 100%);
             color: white;
         }
 
@@ -552,7 +566,7 @@
 
         /* Footer */
         .footer {
-            background: #1a1a1a;
+            background: #141a30;
             color: white;
             padding: 3rem 0 1rem;
         }
@@ -588,15 +602,15 @@
         }
 
         /* Pre-Footer CTA (Unified) */
-        .prefooter-cta { padding: 4rem 0; background: linear-gradient(135deg, rgba(102,126,234,.08), rgba(118,75,162,.08)); }
+        .prefooter-cta { padding: 4rem 0; background: #727275; }
         .prefooter-cta .cta-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .prefooter-cta .lead { display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items:center; margin-bottom: 1.5rem; }
-        .prefooter-cta .lead h2 { margin:0; font-size: 1.8rem; font-weight: 800; color:#0f172a; }
-        .prefooter-cta .lead p { margin:0; color:#475569; line-height:1.8; }
+        .prefooter-cta .lead h2 { margin:0; font-size: 1.8rem; font-weight: 800; color:#ffffff; }
+        .prefooter-cta .lead p { margin:0; color:#ffffff; line-height:1.8; }
         .prefooter-cta .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.25rem; }
         .prefooter-cta .cta-card { border-radius: 20px; padding: 2.5rem 2rem; color:#fff; text-decoration:none; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; box-shadow:0 12px 30px rgba(0,0,0,.12); transition: transform .2s ease, box-shadow .2s ease; text-align:center; }
         .prefooter-cta .cta-card:hover { transform: translateY(-3px); box-shadow:0 18px 44px rgba(0,0,0,.18); }
-        .prefooter-cta .card-dark { background:#1f2937; }
+        .prefooter-cta .card-dark { background:#1f2937 !important; color:#fff; border:none; }
         .prefooter-cta .card-blue { background:#0B5BD3; }
         @media (max-width: 900px){
             .prefooter-cta .lead { grid-template-columns: 1fr; gap: .75rem; }
@@ -939,7 +953,7 @@
     <section class="prefooter-cta" aria-label="行動喚起">
         <div class="cta-wrap">
             <div class="lead">
-                <h2>デジタルマーケティングのお悩み、まずはお気軽にご相談ください。</h2>
+                <h2>デジタルマーケティングのお悩み、<br>まずはお気軽にご相談ください。</h2>
                 <p>SASURAIがお客様と共に考え、最適な解決の方向性をディスカッションを通じて見つけ出します。サービス詳細は資料でもご確認いただけます。</p>
             </div>
             <div class="grid">
@@ -996,11 +1010,7 @@
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            // 固定色を維持するため何もしない
         });
 
         // Mobile menu toggle
