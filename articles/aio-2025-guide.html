@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AIO（AI最適化）2025年版完全解説ガイド - AI検索時代の新戦略</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --brand:#667eea; --brand2:#764ba2; --narrow: 680px; }
+    :root { --primary:#131c32; --accent1:#60a5fa; --accent2:#22d3ee; --text:#0f172a; --muted:#64748b; }
+    * { box-sizing: border-box; }
+    body { font-family: 'Zen Kaku Gothic New', Inter, system-ui, -apple-system, sans-serif; margin:0; color:#0f172a; }
+    /* header */
+    .header { position: fixed; top:0; width:100%; background: #101d32; z-index:1000; padding:1rem 0; }
+    .nav-container { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:0 2rem; }
+    .logo { font-size:1.5rem; font-weight:700; background: linear-gradient(135deg, var(--brand), var(--brand2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .nav-menu { display:flex; list-style:none; gap:2rem; }
+    .nav-menu a { text-decoration:none; color:#e5e7eb; font-weight:600; position:relative; }
+    .nav-menu a:hover { color: var(--accent1); }
+    .nav-menu a::after { content:''; position:absolute; width:0; height:2px; bottom:-5px; left:0; background:linear-gradient(135deg, var(--accent1), var(--accent2)); transition:width .3s ease; }
+    .nav-menu a:hover::after { width:100%; }
+    .cta-button { background: linear-gradient(135deg, var(--brand), var(--brand2)); color:#fff; padding:.8rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:600; }
+    .spacer { height: 64px; }
+    /* article */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+    .hero { padding: 2.5rem 0 1rem; }
+    .title { font-size: 2rem; font-weight: 800; line-height:1.25; margin:0 0 .75rem; }
+    .meta { color:#64748b; margin-bottom: 1.25rem; }
+    .lead { background: linear-gradient(135deg, rgba(102,126,234,.08), rgba(118,75,162,.08)); border-radius:14px; padding:1.25rem 1rem; color:#334155; }
+    /* eyecatch */
+    .eyecatch { margin: 1rem 0 1.25rem; border-radius: 16px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.12); max-width: var(--narrow); }
+    .eyecatch .banner { height: 300px; background: linear-gradient(135deg, #0B5BD3, #1d4ed8); display:flex; align-items:center; justify-content:center; position:relative; }
+    .eyecatch .banner::after { content:''; position:absolute; inset:0; box-shadow: inset 0 10px 40px rgba(0,0,0,.25); border-radius:16px; }
+    .eyecatch h2 { position:relative; z-index:1; color:#fff; font-size:2rem; font-weight:800; text-align:center; line-height:1.35; }
+    .article { display:grid; grid-template-columns: 320px 1fr; gap:2rem; margin-top: 1.5rem; overflow:visible; align-items: stretch; }
+    /* inline toc */
+    .lany-c-toc { margin: 0 0 1.25rem; max-width: var(--narrow); padding: 0; background: transparent; border: 0; }
+    .lany-c-toc .toc-inner { width: calc(var(--narrow) / 2); border:1px solid #e5e7eb; border-radius:14px; background:#f8fafc; padding:1rem 1.25rem; }
+    .lany-c-toc .title { display:block; font-weight:800; color:#1e40af; margin-bottom:.5rem; }
+    .lany-c-toc .h2list { list-style: disc inside; margin:0; padding:0; color:#334155; }
+    .lany-c-toc .h2list li { margin:.5rem 0; }
+    .lany-c-toc a { color:#334155; text-decoration:none; }
+    .lany-c-toc a:hover { color:#1e40af; }
+    /* pickup and categories blocks in sidebar */
+    .sidebar { position: static; top: auto; align-self: stretch; height:auto; overflow:visible; }
+    .pickup-block, .category-block { margin: 0 0 1rem; }
+    .pickup-block .inner, .category-block .inner { width: 100%; border:1px solid #e5e7eb; border-radius:14px; background:#f8fafc; padding:1rem 1.25rem; }
+    .pickup-title, .category-title { font-weight:800; color:#111827; margin:0 0 .5rem; }
+    .pickup-list { list-style:none; margin:0; padding:0; }
+    .pickup-list li { padding:.6rem 0; }
+    .pickup-link { display:block; color:inherit; text-decoration:none; }
+    .pickup-card { display:flex; gap:.6rem; align-items:flex-start; }
+    .pickup-thumb { flex:0 0 72px; height:48px; border-radius:8px; overflow:hidden; position:relative; background:#e5e7eb; }
+    .pickup-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .pickup-body { min-width:0; }
+    .pickup-cat { font-size:.72rem; color:#64748b; margin:0 0 .1rem; }
+    .pickup-title { font-size:.9rem; font-weight:700; color:#111827; margin:0; line-height:1.35; }
+    .tag-cloud { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .tag-pill { display:inline-block; padding:.25rem .55rem; border-radius:999px; background:#eef2ff; color:#3730a3; font-size:.78rem; text-decoration:none; }
+    .tag-pill:hover { background:#e0e7ff; }
+    .sidebar-toc { position:-webkit-sticky; position: sticky; top: 90px; z-index: 2; border:1px solid #e5e7eb; border-radius:12px; padding:1rem; background:#fff; }
+    .sidebar-toc h3 { margin:.25rem 0 .5rem; font-size:1rem; color:#1e40af; font-weight:800; }
+    .sidebar-toc a { display:block; color:#334155; text-decoration:none; padding:.25rem 0; font-size:.95rem; }
+    .sidebar-toc a:hover { color: var(--brand); }
+    .content h2 { font-size:1.5rem; margin:2rem 0 .5rem; }
+    .content h3 { font-size:1.2rem; margin:1.25rem 0 .5rem; }
+    .content p { line-height:1.9; color:#334155; }
+    .note { background:#fff7ed; border:1px solid #fed7aa; padding:.75rem 1rem; border-radius:10px; }
+    table { width:100%; border-collapse: collapse; margin: .75rem 0 1rem; }
+    th, td { border:1px solid #e5e7eb; padding:.6rem .5rem; text-align:left; }
+    th { background:#f1f5f9; }
+    /* prefooter CTA (unified) */
+    .prefooter-cta { padding: 3.5rem 0; background: #727275; }
+    .prefooter-cta .cta-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .prefooter-cta .leadbox { display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items:center; margin-bottom: 1.5rem; }
+    .prefooter-cta h2 { margin:0; font-size: 1.8rem; font-weight:800; color:#ffffff; }
+    .prefooter-cta p { margin:0; color:#ffffff; line-height:1.8; }
+    .prefooter-cta .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1.25rem; }
+    .cta-card { border-radius:20px; padding:2.5rem 2rem; color:#fff; text-decoration:none; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; box-shadow:0 12px 30px rgba(0,0,0,.12); text-align:center; }
+    .card-dark { background:#1f2937; } .card-blue { background:#0B5BD3; }
+    @media (max-width: 1024px){ .eyecatch, .lany-c-toc, .pickup-block, .category-block{ max-width: 100%; } .lany-c-toc .toc-inner, .pickup-block .inner, .category-block .inner { width: 100%; } }
+    @media (max-width: 900px){ .sidebar{ position:static; } .article{ grid-template-columns:1fr; } .prefooter-cta .leadbox{ grid-template-columns:1fr; gap:.75rem; } .prefooter-cta .grid{ grid-template-columns:1fr; } }
+    /* footer */
+    .footer { background:#141a30; color:#fff; padding:3rem 0 1rem; }
+    .footer .container { max-width:1200px; padding:0 2rem; color:#e5e7eb; }
+    .footer-content { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:2rem; margin-bottom:2rem; }
+    .footer-section h3 { margin-bottom:1rem; color:#667eea; }
+    .footer-section p, .footer-section a { color:#ccc; text-decoration:none; line-height:1.8; }
+    .footer-section a:hover { color:#667eea; }
+    .footer-bottom { border-top:1px solid #333; padding-top:1rem; text-align:center; color:#999; }
+  </style>
+</head>
+<body>
+<header class="header" id="header">
+  <div class="nav-container">
+    <div class="logo">SASURAI</div>
+    <nav class="nav-menu" id="nav-menu">
+      <li><a href="../index.html#home">ホーム</a></li>
+      <li><a href="../index.html#services">サービス</a></li>
+      <li><a href="../index.html#about">会社概要</a></li>
+      <li><a href="../index.html#case-studies">導入事例</a></li>
+      <li><a href="../contents.html">お役立ちコンテンツ</a></li>
+      <li><a href="../index.html#contact">お問い合わせ</a></li>
+    </nav>
+    <a href="../index.html#contact" class="cta-button">無料相談</a>
+  </div>
+</header>
+<div class="spacer"></div>
+
+<main class="container">
+  <section class="hero">
+    <h1 class="title">AIO（AI最適化）2025年版完全解説ガイド - AI検索時代の新戦略</h1>
+    <div class="meta">2025年9月17日 | AI・マーケティング</div>
+    <div class="lead">AI OverviewsやAIモードなどのAI検索プラットフォームに最適化する「AIO」。定義の整理から最新トレンド、実装ロードマップ、KPI設計までを俯瞰し、実務に落とし込める形でまとめました。</div>
+    <figure class="eyecatch">
+      <div class="banner">
+        <h2>AI検索時代のAIO完全ガイド</h2>
+      </div>
+    </figure>
+    <div class="s-detail__toc lany-c-toc" id="toc">
+      <div class="toc-inner">
+        <span class="title">目次</span>
+        <ul class="h2list">
+          <li><a class="tocLink" href="#intro"><span>はじめに</span></a></li>
+          <li><a class="tocLink" href="#def"><span>AIOとは何か</span></a></li>
+          <li><a class="tocLink" href="#market"><span>AI検索時代の到来</span></a></li>
+          <li><a class="tocLink" href="#diff"><span>AIOと従来SEOの違い</span></a></li>
+          <li><a class="tocLink" href="#strategy"><span>AIO対策の核心戦略</span></a></li>
+          <li><a class="tocLink" href="#industries"><span>業界別AIO実装戦略</span></a></li>
+          <li><a class="tocLink" href="#trends"><span>最新動向と技術トレンド</span></a></li>
+          <li><a class="tocLink" href="#kpi"><span>効果測定とKPI設計</span></a></li>
+          <li><a class="tocLink" href="#roadmap"><span>実装ロードマップ</span></a></li>
+          <li><a class="tocLink" href="#outlook"><span>将来展望</span></a></li>
+          <li><a class="tocLink" href="#summary"><span>まとめ</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="article">
+    <aside class="sidebar" aria-label="サイドバー">
+      <section class="pickup-block" aria-label="ピックアップ記事">
+        <div class="inner">
+          <h3 class="pickup-title">ピックアップ記事</h3>
+          <ul class="pickup-list">
+            <li>
+              <a class="pickup-link" href="../contents.html">
+                <div class="pickup-card">
+                  <figure class="pickup-thumb"><img src="https://dummyimage.com/320x180/0b5bd3/ffffff&text=AI+Overviews" alt="AI Overviewsとは？"></figure>
+                  <div class="pickup-body"><div class="pickup-cat">LLMO・AI</div><p class="pickup-title">AI Overviewsとは？SGEとの違いやSEOへの影響を解説</p></div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="pickup-link" href="../contents.html">
+                <div class="pickup-card">
+                  <figure class="pickup-thumb"><img src="https://dummyimage.com/320x180/2563eb/ffffff&text=LLMO" alt="LLMOとは？"></figure>
+                  <div class="pickup-body"><div class="pickup-cat">LLMO・AI</div><p class="pickup-title">LLMOとは？SEOとの違いや生成AI時代の対策方法</p></div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="pickup-link" href="../contents.html">
+                <div class="pickup-card">
+                  <figure class="pickup-thumb"><img src="https://dummyimage.com/320x180/1d4ed8/ffffff&text=BtoB" alt="BtoBに強い記事制作"></figure>
+                  <div class="pickup-body"><div class="pickup-cat">記事制作</div><p class="pickup-title">BtoBに強い記事制作の方法は？目的や種類、SEOの外注先の選び方</p></div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="category-block" aria-label="カテゴリー">
+        <div class="inner">
+          <h3 class="category-title">カテゴリー</h3>
+          <div class="tag-cloud">
+            <a class="tag-pill" href="../contents.html#tag=AI">#AI</a>
+            <a class="tag-pill" href="../contents.html#tag=最適化">#最適化</a>
+            <a class="tag-pill" href="../contents.html#tag=マーケ">#マーケ</a>
+            <a class="tag-pill" href="../contents.html#tag=UX">#UX</a>
+            <a class="tag-pill" href="../contents.html#tag=データ">#データ</a>
+            <a class="tag-pill" href="../contents.html#tag=将来">#将来</a>
+          </div>
+        </div>
+      </section>
+      <div class="sidebar-toc">
+        <h3>目次</h3>
+        <a href="#intro">はじめに</a>
+        <a href="#def">AIOとは何か</a>
+        <a href="#market">AI検索時代の到来</a>
+        <a href="#diff">AIOと従来SEOの違い</a>
+        <a href="#strategy">AIO対策の核心戦略</a>
+        <a href="#industries">業界別実装戦略</a>
+        <a href="#trends">最新動向と技術トレンド</a>
+        <a href="#kpi">効果測定とKPI設計</a>
+        <a href="#roadmap">実装ロードマップ</a>
+        <a href="#outlook">将来展望</a>
+        <a href="#summary">まとめ</a>
+      </div>
+    </aside>
+
+    <article class="content">
+      <h2 id="intro">はじめに：検索の劇的な変化とAIOの台頭</h2>
+      <p>2025年現在、Google AI Overviewsの普及とAIモードの本格展開によって、検索は「10のリンク」から「AIによる回答」へと大きく舵を切りました。これに対応する戦略が <strong>AIO（AI Optimization）</strong> です。</p>
+
+      <h2 id="def">AIOとは何か？- 定義と概念の整理</h2>
+      <h3>AIOの正確な定義</h3>
+      <p><strong>AIO（Artificial Intelligence Optimization）</strong> とは、生成AIプラットフォームやAI検索で自社の情報が適切に引用・参照されるよう、コンテンツと技術の両面を最適化する一連の取り組みを指します。</p>
+      <h3>関連用語の整理と使い分け</h3>
+      <table>
+        <thead><tr><th>用語</th><th>正式名称</th><th>対象範囲</th><th>主要地域</th></tr></thead>
+        <tbody>
+          <tr><td><strong>AIO</strong></td><td>AI Optimization</td><td>AI全般（包括）</td><td>日本・一部米国</td></tr>
+          <tr><td><strong>LLMO</strong></td><td>Large Language Model Optimization</td><td>大規模言語モデル</td><td>日本・アジア</td></tr>
+          <tr><td><strong>GEO</strong></td><td>Generative Engine Optimization</td><td>生成AI検索</td><td>米国・欧州</td></tr>
+          <tr><td><strong>AEO</strong></td><td>Answer Engine Optimization</td><td>回答エンジン</td><td>国際</td></tr>
+          <tr><td><strong>GAIO</strong></td><td>Generative AI Optimization</td><td>生成AI全般</td><td>新興</td></tr>
+        </tbody>
+      </table>
+      <p>実務上はこれらを統合的に扱うのが有効で、本記事では「AIO」で統一します。</p>
+
+      <h2 id="market">AI検索時代の到来：背景と現状分析</h2>
+      <h3>検索行動の根本的変化</h3>
+      <p>クエリの長文化、マルチモーダル検索、会話型検索の普及が顕著です。米国ではAI応答表示の比率が2桁に達しています。</p>
+      <h3>ゼロクリック検索の現実と対策</h3>
+      <p>ゼロクリックは脅威である一方、AIに引用されたリンクは高いCTRを示すというデータもあります。<em>引用獲得</em>こそがAIOの核心です。</p>
+
+      <h2 id="diff">AIOと従来SEOの戦略的違い</h2>
+      <table>
+        <thead><tr><th>要素</th><th>従来のSEO</th><th>AIO（AI最適化）</th></tr></thead>
+        <tbody>
+          <tr><td>最終目標</td><td>検索上位表示</td><td>AIからの引用・参照</td></tr>
+          <tr><td>対象エンジン</td><td>検索エンジン</td><td>生成AI / LLM</td></tr>
+          <tr><td>評価軸</td><td>PageRank/被リンク</td><td>意味理解/E-E-A-T</td></tr>
+          <tr><td>最適化単位</td><td>ページ</td><td>段落/文</td></tr>
+          <tr><td>成功指標</td><td>順位/流入</td><td>引用回数/言及頻度</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="strategy">AIO対策の核心戦略</h2>
+      <h3>1. E-E-A-T最適化の深化</h3>
+      <p>経験・専門性・権威性・信頼性を、<strong>一次情報</strong>と<strong>監修体制</strong>で裏付けます。</p>
+      <h3>2. AI理解を助ける構造化</h3>
+      <p><code>Article</code> / <code>FAQPage</code> / <code>HowTo</code> / <code>Organization</code> を優先実装。段落レベルの結論先出し・要点要約で引用性を高めます。</p>
+      <h3>3. プラットフォーム別最適化</h3>
+      <p>ChatGPT/Perplexity/AI Overview それぞれに合わせ、出典表示・最新性・回答直結性を調整します。</p>
+
+      <h2 id="industries">業界別AIO実装戦略</h2>
+      <p>BtoB/SaaS、EC、小売、求人、医療・健康など、一次データと構造化がキーファクターです。</p>
+
+      <h2 id="trends">2025年最新動向と技術トレンド</h2>
+      <p>AI Modeの本格展開、マルチモーダルの高度化、新興エコシステムの台頭に備え、メタデータ設計とメディア横断の最適化を進めます。</p>
+
+      <h2 id="kpi">効果測定とKPI設計</h2>
+      <p>引用回数・言及頻度・AI経由間接流入など、AIO専用KPIを分解し、段階ごとに追跡します。</p>
+
+      <h2 id="roadmap">実装ロードマップ：段階的導入戦略</h2>
+      <p>基盤整備→本格展開→継続最適化の3フェーズで、技術・コンテンツ・体制を強化します。</p>
+
+      <h2 id="outlook">業界専門家の見解と将来展望</h2>
+      <p>「AIに信頼される情報源」になることが中長期の勝ち筋。リアルタイム性とパーソナライズ対応が鍵です。</p>
+
+      <h2 id="summary">まとめ：AI検索時代の成功戦略</h2>
+      <p>ユーザーファースト、品質重視、継続改善、マルチプラットフォーム、データドリブンの5原則を徹底しましょう。</p>
+
+      <h2>関連記事</h2>
+      <ul class="c-related__list">
+        <li class="c-related__item">
+          <a href="../contents.html" class="lany-c-card1">
+            <div class="c-card1__inner">
+              <figure class="c-card1__img"><img src="https://dummyimage.com/640x360/0b5bd3/ffffff&text=AI+Mode" alt="アイキャッチ画像" class="--center"><span style="background-image:url('https://dummyimage.com/640x360/0b5bd3/ffffff')"></span></figure>
+              <div class="c-card1__meta"><span class="c-card1__category">LLMO・AI</span><time class="c-card1__date" datetime="2025-08-18">2025.08.18</time></div>
+              <div class="c-card1__title">Google検索の新機能「AIモード」とは？SEOへの影響や対策方法を解説</div>
+            </div>
+          </a>
+        </li>
+        <li class="c-related__item">
+          <a href="../contents.html" class="lany-c-card1">
+            <div class="c-card1__inner">
+              <figure class="c-card1__img"><img src="https://dummyimage.com/640x360/2563eb/ffffff&text=Content+Marketing" alt="アイキャッチ画像" class="--center"><span style="background-image:url('https://dummyimage.com/640x360/2563eb/ffffff')"></span></figure>
+              <div class="c-card1__meta"><span class="c-card1__category">LLMO・AI</span><time class="c-card1__date" datetime="2025-07-22">2025.07.22</time></div>
+              <div class="c-card1__title">AIを活用したコンテンツマーケティングとは？メリットやデメリット、活用方法を解説</div>
+            </div>
+          </a>
+        </li>
+        <li class="c-related__item">
+          <a href="../contents.html" class="lany-c-card1">
+            <div class="c-card1__inner">
+              <figure class="c-card1__img"><img src="https://dummyimage.com/640x360/1d4ed8/ffffff&text=BtoB+Marketing" alt="アイキャッチ画像" class="--center"><span style="background-image:url('https://dummyimage.com/640x360/1d4ed8/ffffff')"></span></figure>
+              <div class="c-card1__meta"><span class="c-card1__category">LLMO・AI</span><time class="c-card1__date" datetime="2025-08-04">2025.08.04</time></div>
+              <div class="c-card1__title">AIを活用したBtoBマーケティングとは?メリットやデメリット、ポイントを解説</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<section class="prefooter-cta" aria-label="行動喚起">
+  <div class="cta-wrap">
+    <div class="leadbox">
+      <h2>デジタルマーケティングのお悩み、<br>まずはお気軽にご相談ください。</h2>
+      <p>SASURAIがお客様と共に考え、最適な解決の方向性をディスカッションを通じて見つけ出します。サービス詳細は資料でもご確認いただけます。</p>
+    </div>
+    <div class="grid">
+      <a class="cta-card card-dark" href="#trial">まずは無料体験をしてみる</a>
+      <a class="cta-card card-blue" href="../index.html#contact">まずは相談してみる</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>SASURAI</h3>
+        <p>AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービスを提供します。</p>
+        <p>お客様と共に、次世代のWebエクスペリエンスを創造します。</p>
+      </div>
+      <div class="footer-section">
+        <h3>サービス</h3>
+        <p><a href="../index.html#services">AI Webサイト開発</a></p>
+        <p><a href="../index.html#services">システム導入支援</a></p>
+        <p><a href="../index.html#services">運用・保守サービス</a></p>
+        <p><a href="../index.html#services">AIコンサルティング</a></p>
+        <p><a href="../index.html#services">パフォーマンス分析</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>会社情報</h3>
+        <p><a href="../index.html#about">会社概要</a></p>
+        <p><a href="../index.html#case-studies">導入事例</a></p>
+        <p><a href="../contents.html">お役立ちコンテンツ</a></p>
+        <p><a href="../index.html#contact">お問い合わせ</a></p>
+        <p><a href="#">プライバシーポリシー</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>お問い合わせ</h3>
+        <p>📞 03-1234-5678</p>
+        <p>✉️ info@sasurai.co.jp</p>
+        <p>📍 東京都渋谷区〇〇1-2-3</p>
+        <p>🕐 平日 9:00-18:00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 株式会社SASURAI. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('header');
+    const toc = document.getElementById('toc');
+    if (!toc) return;
+    const tocInner = toc.querySelector('.toc-inner');
+    const links = tocInner.querySelectorAll('.tocLink');
+    function updateOffset(){ tocInner.style.top = header.offsetHeight + 'px'; }
+    updateOffset();
+    window.addEventListener('resize', updateOffset);
+    links.forEach(a=>a.addEventListener('click', e=>{ e.preventDefault(); const id=a.getAttribute('href').slice(1); const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }));
+  });
+</script>
+</body>
+</html> 
