@@ -10,7 +10,7 @@
     <style>
         :root { --brand: #1f3fb3; --muted:#6b7280; }
         * { box-sizing: border-box; }
-        body { font-family: Inter, system-ui, -apple-system, sans-serif; margin: 0; color:#0f172a; }
+                 body { font-family: Inter, system-ui, -apple-system, sans-serif; margin: 0; color:#0f172a; }
         /* Header (unified) */
         .header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 0; transition: all .3s ease; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
@@ -24,6 +24,34 @@
         .spacer { height: 64px; }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+        /* Listing hero */
+        .list-hero { padding: 2.75rem 0 1.25rem; }
+        .list-hero .title { font-size: 2rem; font-weight: 800; margin: 0 0 .25rem; }
+        .list-hero .sub { color:#64748b; margin:0 0 1rem; }
+        .hero-banner { height: 220px; border-radius: 28px; overflow:hidden; position:relative; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 16px 48px rgba(0,0,0,.18); background:
+          radial-gradient(1200px 300px at 20% 0%, rgba(255,255,255,.08), transparent 60%),
+          linear-gradient(135deg, #0B5BD3 0%, #1d4ed8 50%, #0B5BD3 100%);
+        }
+        .hero-banner .label { position:absolute; top:16px; left:16px; background: rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); padding:.25rem .6rem; border-radius:999px; font-size:.8rem; }
+        .hero-banner h2 { margin:0; font-size:1.6rem; font-weight:800; letter-spacing:.02em; text-shadow:0 4px 20px rgba(0,0,0,.25); }
+
+        /* Refined filters */
+        .filters-card { border:1px solid #e5e7eb; border-radius:24px; background:#f1f5f9; padding:1.25rem 1.5rem; margin: .25rem 0 1.5rem; box-shadow: inset 0 1px 0 rgba(255,255,255,.65); }
+        .filters-head { display:flex; align-items:center; justify-content:center; gap:.5rem; color:#0f172a; font-weight:800; margin: .25rem 0 .75rem; }
+        .filters-head .dot { width:10px; height:10px; border-radius:999px; background:#0B5BD3; display:inline-block; }
+        .filters-grid { display:grid; grid-template-columns: 140px 1fr; gap:.75rem 1rem; align-items:center; }
+        .filters-label { color:#6b7280; font-size:.9rem; text-align:right; }
+        .controls { display:flex; gap:.75rem; padding:0; flex-wrap:wrap; }
+        .search { flex: 1 1 520px; display:flex; align-items:center; gap:.6rem; border:1px solid #e2e8f0; border-radius:999px; padding:.9rem 1.1rem; background:white; box-shadow:0 2px 8px rgba(0,0,0,.03); }
+        .search svg { opacity:.7; }
+        .search input { font-size:1.05rem; }
+        .tags { display:flex; gap:.5rem; flex-wrap:wrap; }
+        .tag { padding:.45rem .8rem; border:1px solid #e5e7eb; border-radius:999px; font-size:.88rem; color:#374151; background:white; cursor:pointer; transition: all .2s ease; box-shadow:0 1px 0 rgba(0,0,0,.02); }
+        .tag:hover { border-color:#cbd5e1; }
+        .search-actions { display:flex; align-items:center; justify-content:flex-start; }
+        .search-btn { display:inline-flex; align-items:center; gap:.5rem; background: #0B5BD3; color:#fff; border:none; border-radius:999px; padding:.8rem 1.2rem; font-weight:700; cursor:pointer; box-shadow:0 10px 24px rgba(11,91,211,.25); }
+        .search-btn .play { width:10px; height:10px; border:2px solid #fff; border-left-color:transparent; border-bottom-color:transparent; transform: rotate(45deg); margin-left:.1rem; }
+        .grid { padding: 1.25rem 0 3rem; }
         .controls { display:flex; gap: .5rem; padding: .5rem 0; flex-wrap: wrap; }
         .search { flex: 1 1 320px; display:flex; align-items:center; gap:.5rem; border:1px solid #e5e7eb; border-radius: 10px; padding:.6rem .8rem; }
         .search input { appearance:none; border:none; outline:none; width:100%; font-size: 1rem; }
@@ -84,12 +112,25 @@
     <div class="spacer"></div>
 
 <main class="container">
-    <div class="controls">
-        <label class="search" aria-label="検索">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.2-4.2" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="#94a3b8" stroke-width="2"/></svg>
-            <input id="q" type="search" placeholder="キーワード検索（例：AI 最適化 UX）" />
-        </label>
+    <section class="list-hero" aria-label="一覧のヘッダー">
+        <div class="hero-banner">
+          <span class="label">Blog</span>
+          <h2>ビジネスに役立つコンテンツ</h2>
+        </div>
+    </section>
+
+    <div class="filters-card">
+      <div class="filters-grid">
+        <div class="filters-label">キーワード検索</div>
+        <div class="controls">
+          <label class="search" aria-label="検索">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.2-4.2" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="#94a3b8" stroke-width="2"/></svg>
+              <input id="q" type="search" placeholder="キーワード検索（例：AI 最適化 UX）" />
+          </label>
+        </div>
+        <div class="filters-label">カテゴリ</div>
         <div class="tags" id="tags"></div>
+      </div>
     </div>
 
     <section id="results" class="grid" aria-live="polite"></section>
