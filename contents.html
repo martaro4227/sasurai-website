@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>お役立ちコンテンツ一覧</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <style>
+        :root { --brand: #1f3fb3; --muted:#6b7280; }
+        * { box-sizing: border-box; }
+                 body { font-family: Inter, system-ui, -apple-system, sans-serif; margin: 0; color:#0f172a; }
+        /* Header (unified) */
+        .header { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 0; transition: all .3s ease; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        .logo { font-size: 1.5rem; font-weight: bold; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .nav-menu { display:flex; list-style:none; gap:2rem; }
+        .nav-menu a { text-decoration:none; color:#333; font-weight:500; position:relative; transition: color .3s ease; }
+        .nav-menu a:hover { color:#667eea; }
+        .nav-menu a::after { content:''; position:absolute; width:0; height:2px; bottom:-5px; left:0; background:linear-gradient(135deg,#667eea,#764ba2); transition: width .3s ease; }
+        .nav-menu a:hover::after { width:100%; }
+        .cta-button { background: linear-gradient(135deg, #667eea, #764ba2); color:#fff; padding:.8rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:600; }
+        .spacer { height: 64px; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
+        /* Listing hero */
+        .list-hero { padding: 2.75rem 0 1.25rem; }
+        .list-hero .title { font-size: 2rem; font-weight: 800; margin: 0 0 .25rem; }
+        .list-hero .sub { color:#64748b; margin:0 0 1rem; }
+        .hero-banner { height: 220px; border-radius: 28px; overflow:hidden; position:relative; display:flex; align-items:center; justify-content:center; color:#fff; box-shadow:0 16px 48px rgba(0,0,0,.18); background:
+          radial-gradient(1200px 300px at 20% 0%, rgba(255,255,255,.08), transparent 60%),
+          linear-gradient(135deg, #0B5BD3 0%, #1d4ed8 50%, #0B5BD3 100%);
+        }
+        .hero-banner .label { position:absolute; top:16px; left:16px; background: rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); padding:.25rem .6rem; border-radius:999px; font-size:.8rem; }
+        .hero-banner h2 { margin:0; font-size:1.6rem; font-weight:800; letter-spacing:.02em; text-shadow:0 4px 20px rgba(0,0,0,.25); }
+
+        /* Refined filters */
+        .filters-card { border:1px solid #e5e7eb; border-radius:24px; background:#f1f5f9; padding:1.25rem 1.5rem; margin: .25rem 0 1.5rem; box-shadow: inset 0 1px 0 rgba(255,255,255,.65); }
+        .filters-head { display:flex; align-items:center; justify-content:center; gap:.5rem; color:#0f172a; font-weight:800; margin: .25rem 0 .75rem; }
+        .filters-head .dot { width:10px; height:10px; border-radius:999px; background:#0B5BD3; display:inline-block; }
+        .filters-grid { display:grid; grid-template-columns: 140px 1fr; gap:.75rem 1rem; align-items:center; }
+        .filters-label { color:#6b7280; font-size:.9rem; text-align:right; }
+        .controls { display:flex; gap:.75rem; padding:0; flex-wrap:wrap; }
+        .search { flex: 1 1 520px; display:flex; align-items:center; gap:.6rem; border:1px solid #e2e8f0; border-radius:999px; padding:.9rem 1.1rem; background:white; box-shadow:0 2px 8px rgba(0,0,0,.03); }
+        .search svg { opacity:.7; }
+        .search input { font-size:1.05rem; }
+        .tags { display:flex; gap:.5rem; flex-wrap:wrap; }
+        .tag { padding:.45rem .8rem; border:1px solid #e5e7eb; border-radius:999px; font-size:.88rem; color:#374151; background:white; cursor:pointer; transition: all .2s ease; box-shadow:0 1px 0 rgba(0,0,0,.02); }
+        .tag:hover { border-color:#cbd5e1; }
+        .search-actions { display:flex; align-items:center; justify-content:flex-start; }
+        .search-btn { display:inline-flex; align-items:center; gap:.5rem; background: #0B5BD3; color:#fff; border:none; border-radius:999px; padding:.8rem 1.2rem; font-weight:700; cursor:pointer; box-shadow:0 10px 24px rgba(11,91,211,.25); }
+        .search-btn .play { width:10px; height:10px; border:2px solid #fff; border-left-color:transparent; border-bottom-color:transparent; transform: rotate(45deg); margin-left:.1rem; }
+        .grid { padding: 1.25rem 0 3rem; }
+        .controls { display:flex; gap: .5rem; padding: .5rem 0; flex-wrap: wrap; }
+        .search { flex: 1 1 320px; display:flex; align-items:center; gap:.5rem; border:1px solid #e5e7eb; border-radius: 10px; padding:.6rem .8rem; }
+        .search input { appearance:none; border:none; outline:none; width:100%; font-size: 1rem; }
+        .tags { display:flex; gap:.4rem; flex-wrap:wrap; }
+        .tag { padding:.35rem .6rem; border:1px solid #e5e7eb; border-radius:999px; font-size:.85rem; color:#374151; background:white; cursor:pointer; }
+        .tag.active { color:white; background:var(--brand); border-color:var(--brand); }
+        .grid { display:grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap:1rem; padding: 1rem 0 3rem; }
+        @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 640px)  { .grid { grid-template-columns: 1fr; } }
+        .card { background:white; border-radius:14px; overflow:hidden; box-shadow:0 6px 16px rgba(0,0,0,.08); transition: transform .2s ease, box-shadow .2s ease; height: 300px; display:flex; flex-direction: column; }
+        .card:hover { transform: translateY(-3px); box-shadow:0 12px 28px rgba(0,0,0,.12); }
+        .thumb { height: 120px; background: linear-gradient(135deg, #667eea, #764ba2); display:flex; align-items:center; justify-content:center; color:white; font-weight:600; text-decoration:none; }
+        .body { padding:0.9rem 1rem; display:flex; flex:1; flex-direction: column; }
+        .meta { color: var(--muted); font-size:.82rem; margin-bottom:.35rem; }
+        .body h3 { font-size:1rem; margin:.1rem 0 .35rem; line-height:1.45; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+        .body p { color:#475569; font-size:.86rem; line-height:1.5; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin:0 0 .25rem; }
+        .pill { display:inline-block; margin-top:auto; padding:.2rem .5rem; border-radius:999px; background:#eef2ff; color:#3730a3; font-size:.72rem; width:max-content; }
+        /* Footer (unified from TOP) */
+        .footer { background:#1a1a1a; color:#fff; padding:3rem 0 1rem; }
+        .footer-content { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:2rem; margin-bottom:2rem; }
+        .footer-section h3 { margin-bottom:1rem; color:#667eea; }
+        .footer-section p,
+        .footer-section a { color:#ccc; text-decoration:none; line-height:1.8; margin:0; display:block; }
+        .footer-section a:hover { color:#667eea; }
+        .footer-bottom { border-top:1px solid #333; padding-top:1rem; text-align:center; color:#999; }
+        /* Pre-Footer CTA (Unified) */
+        .prefooter-cta { padding: 4rem 0; background: linear-gradient(135deg, rgba(102,126,234,.08), rgba(118,75,162,.08)); }
+        .prefooter-cta .cta-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .prefooter-cta .lead { display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items:center; margin-bottom: 1.5rem; }
+        .prefooter-cta .lead h2 { margin:0; font-size: 1.8rem; font-weight: 800; color:#0f172a; }
+        .prefooter-cta .lead p { margin:0; color:#475569; line-height:1.8; }
+        .prefooter-cta .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.25rem; }
+        .prefooter-cta .cta-card { border-radius: 20px; padding: 2.5rem 2rem; color:#fff; text-decoration:none; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; box-shadow:0 12px 30px rgba(0,0,0,.12); transition: transform .2s ease, box-shadow .2s ease; text-align:center; }
+        .prefooter-cta .cta-card:hover { transform: translateY(-3px); box-shadow:0 18px 44px rgba(0,0,0,.18); }
+        .prefooter-cta .card-dark { background:#1f2937; }
+        .prefooter-cta .card-blue { background:#0B5BD3; }
+        @media (max-width: 900px){
+            .prefooter-cta .lead { grid-template-columns: 1fr; gap: .75rem; }
+            .prefooter-cta .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">SASURAI</div>
+            <nav class="nav-menu" id="nav-menu">
+                <li><a href="index.html#home">ホーム</a></li>
+                <li><a href="index.html#services">サービス</a></li>
+                <li><a href="index.html#about">会社概要</a></li>
+                <li><a href="index.html#case-studies">導入事例</a></li>
+                <li><a href="contents.html">お役立ちコンテンツ</a></li>
+                <li><a href="index.html#contact">お問い合わせ</a></li>
+            </nav>
+            <a href="index.html#contact" class="cta-button">無料相談</a>
+        </div>
+    </header>
+    <div class="spacer"></div>
+
+<main class="container">
+    <section class="list-hero" aria-label="一覧のヘッダー">
+        <div class="hero-banner">
+          <span class="label">Blog</span>
+          <h2>ビジネスに役立つコンテンツ</h2>
+        </div>
+    </section>
+
+    <div class="filters-card">
+      <div class="filters-grid">
+        <div class="filters-label">キーワード検索</div>
+        <div class="controls">
+          <label class="search" aria-label="検索">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.2-4.2" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="#94a3b8" stroke-width="2"/></svg>
+              <input id="q" type="search" placeholder="キーワード検索（例：AI 最適化 UX）" />
+          </label>
+        </div>
+        <div class="filters-label">カテゴリ</div>
+        <div class="tags" id="tags"></div>
+      </div>
+    </div>
+
+    <section id="results" class="grid" aria-live="polite"></section>
+</main>
+
+<!-- Pre-Footer CTA (Unified) -->
+<section class="prefooter-cta" aria-label="行動喚起">
+    <div class="cta-wrap">
+        <div class="lead">
+            <h2>デジタルマーケティングのお悩み、まずはお気軽にご相談ください。</h2>
+            <p>SASURAIがお客様と共に考え、最適な解決の方向性をディスカッションを通じて見つけ出します。サービス詳細は資料でもご確認いただけます。</p>
+        </div>
+        <div class="grid">
+            <a class="cta-card card-dark" href="#trial">まずは無料体験をしてみる</a>
+            <a class="cta-card card-blue" href="index.html#contact">まずは相談してみる</a>
+        </div>
+    </div>
+    </section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SASURAI</h3>
+                <p>AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービスを提供します。</p>
+                <p>お客様と共に、次世代のWebエクスペリエンスを創造します。</p>
+            </div>
+            <div class="footer-section">
+                <h3>サービス</h3>
+                <p><a href="index.html#services">AI Webサイト開発</a></p>
+                <p><a href="index.html#services">システム導入支援</a></p>
+                <p><a href="index.html#services">運用・保守サービス</a></p>
+                <p><a href="index.html#services">AIコンサルティング</a></p>
+                <p><a href="index.html#services">パフォーマンス分析</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>会社情報</h3>
+                <p><a href="index.html#about">会社概要</a></p>
+                <p><a href="index.html#case-studies">導入事例</a></p>
+                <p><a href="contents.html">お役立ちコンテンツ</a></p>
+                <p><a href="index.html#contact">お問い合わせ</a></p>
+                <p><a href="#">プライバシーポリシー</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>お問い合わせ</h3>
+                <p>📞 03-1234-5678</p>
+                <p>✉️ info@sasurai.co.jp</p>
+                <p>📍 東京都渋谷区〇〇1-2-3</p>
+                <p>🕐 平日 9:00-18:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 株式会社SASURAI. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+const ITEMS = [
+  { id:'ai-opt', title:'2024年版 AIによるWebサイト自動最適化の基本', date:'2024-09-10', cat:'AI・マーケティング', tags:['AI','最適化','マーケ'], desc:'機械学習を活用したWebサイトの自動改善を導入から効果測定まで解説', thumb:'AI Web最適化ガイド', url:'articles/ai-website-optimization-2024.html' },
+  { id:'ux-personal', title:'AIパーソナライゼーションで実現する次世代UX', date:'2024-09-08', cat:'UX・AI', tags:['UX','パーソナライズ','AI'], desc:'ユーザー別最適化の設計方法と成功事例', thumb:'パーソナライゼーション', url:'#' },
+  { id:'analytics', title:'AIが変える今後のWebアナリティクス', date:'2024-09-05', cat:'データ活用', tags:['分析','データ','AI'], desc:'予測分析とリアルタイム最適化の活用法', thumb:'データ分析活用', url:'#' },
+  { id:'abtest', title:'AIによる自動A/Bテストで効率的な改善を実現', date:'2024-09-03', cat:'テスト自動化', tags:['テスト','自動化'], desc:'人手を介さず継続改善する枠組み', thumb:'自動A/Bテスト', url:'#' },
+  { id:'roi', title:'AI投資のROI最大化：導入から成果測定まで', date:'2024-09-01', cat:'投資対効果', tags:['ROI','投資','評価'], desc:'投資対効果の算出方法と価値創造のポイント', thumb:'ROI最大化戦略', url:'#' },
+  { id:'future', title:'2025年のWebサイトはどう進化するか', date:'2024-08-28', cat:'技術トレンド', tags:['将来','トレンド'], desc:'AI・機械学習・IoT融合の可能性', thumb:'未来のWeb体験', url:'#' },
+];
+
+const UNIQUE_TAGS = Array.from(new Set(ITEMS.flatMap(i=>i.tags))).sort();
+const tagsEl = document.getElementById('tags');
+let activeTags = new Set();
+UNIQUE_TAGS.forEach(t=>{
+  const btn = document.createElement('button');
+  btn.className='tag';
+  btn.textContent = t;
+  btn.onclick = ()=>{ btn.classList.toggle('active'); btn.classList.contains('active') ? activeTags.add(t) : activeTags.delete(t); render(); };
+  tagsEl.appendChild(btn);
+});
+
+const qEl = document.getElementById('q');
+qEl.addEventListener('input', render);
+
+function match(item){
+  const q = qEl.value.trim().toLowerCase();
+  const hitQ = !q || [item.title, item.desc, item.cat, ...(item.tags||[])].join(' ').toLowerCase().includes(q);
+  const hitTag = activeTags.size===0 || item.tags.some(t=>activeTags.has(t));
+  return hitQ && hitTag;
+}
+
+function card(item){
+  const el = document.createElement('article');
+  el.className='card';
+  el.innerHTML = `
+    <a class="thumb" href="${item.url}">${item.thumb}</a>
+    <div class="body">
+      <div class="meta">${fmt(item.date)} | ${item.cat}</div>
+      <h3><a href="${item.url}">${item.title}</a></h3>
+      <p>${item.desc}</p>
+      ${item.tags.map(t=>`<span class="pill">#${t}</span>`).join(' ')}
+    </div>
+  `;
+  return el;
+}
+
+function fmt(d){
+  const dt = new Date(d); return `${dt.getFullYear()}年${('0'+(dt.getMonth()+1)).slice(-2)}月${('0'+dt.getDate()).slice(-2)}日`;
+}
+
+function render(){
+  const list = document.getElementById('results');
+  list.innerHTML='';
+  ITEMS.filter(match).forEach(i=>list.appendChild(card(i)));
+}
+render();
+</script>
+</body>
+</html> 
