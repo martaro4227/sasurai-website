@@ -40,3 +40,6 @@ open http://localhost:8000/articles/aio-2025-guide.html
 - 静的サイトのためビルド工程はありません
 - デザインは `ai-website-optimization-2024.html` と同一の原則に準拠してください
 - 必要に応じて `LOCAL_DEV.md` も参照ください 
+
+## フォーク側プレビューURL（任意）
+- 例: `https://<your-account>.github.io/<fork-repo>/articles/aio-2025-guide.html` 
