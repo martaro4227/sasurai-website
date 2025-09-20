@@ -28,8 +28,21 @@
         }
     }
     </script>
-
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <style>
+        :root{
+          --primary:#131c32; /* deep navy */
+          --surface:#0b1220;
+          --surface-2:#0f1830;
+          --text-light:#e5e7eb;
+          --muted-light:#94a3b8;
+          --text-dark:#0f172a;
+          --accent1:#60a5fa; /* sky */
+          --accent2:#22d3ee; /* cyan */
+        }
         * {
             margin: 0;
             padding: 0;
@@ -37,10 +50,11 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #111827;
             overflow-x: hidden;
+            background: linear-gradient(180deg, #0b1220 0%, #0f1830 30%, #0b1220 100%);
         }
 
         /* Header */
@@ -48,16 +62,15 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: #101d32;
             z-index: 1000;
             padding: 1rem 0;
-            transition: all 0.3s ease;
+            transition: none;
         }
 
         .header.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: #101d32;
+            box-shadow: none;
         }
 
         .nav-container {
@@ -70,12 +83,13 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-size: 1.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #60a5fa 0%, #22d3ee 50%, #60a5fa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing:.02em;
         }
 
         .nav-menu {
@@ -86,15 +100,13 @@
 
         .nav-menu a {
             text-decoration: none;
-            color: #333;
-            font-weight: 500;
+            color: #e5e7eb;
+            font-weight: 600;
             transition: color 0.3s ease;
             position: relative;
         }
 
-        .nav-menu a:hover {
-            color: #667eea;
-        }
+        .nav-menu a:hover { color: var(--accent1); }
 
         .nav-menu a::after {
             content: '';
@@ -103,7 +115,7 @@
             height: 2px;
             bottom: -5px;
             left: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
             transition: width 0.3s ease;
         }
 
@@ -112,7 +124,7 @@
         }
 
         .cta-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--accent1) 0%, var(--accent2) 100%);
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
@@ -129,7 +141,9 @@
         /* Hero Section */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: radial-gradient(800px 300px at 20% 0%, rgba(96,165,250,.18), transparent 60%),
+                        radial-gradient(800px 300px at 80% 100%, rgba(34,211,238,.18), transparent 60%),
+                        linear-gradient(135deg, #0b1220 0%, #0f1830 50%, #0b1220 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -215,7 +229,7 @@
         /* Services Section */
         .services {
             padding: 5rem 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #1e2a4a 100%);
             position: relative;
             overflow: hidden;
         }
@@ -374,14 +388,44 @@
             padding: 5rem 0;
             background: white;
         }
-
+        .blog .section-title h2 {
+            color: #0f172a;
+            font-weight: 800;
+        }
+        .blog-tabs {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+            border-bottom: 2px solid #eaeaea;
+        }
+        .blog-tab {
+            appearance: none;
+            background: none;
+            border: none;
+            padding: 1rem 0.5rem;
+            font-weight: 700;
+            color: #666;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        .blog-tab.active {
+            color: #1f3fb3;
+            border-color: #1f3fb3;
+        }
+        .blog-tabs .blog-tab {
+            font-size: 1.3rem;
+        }
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
-
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+        
         .blog-card {
             background: white;
             border-radius: 15px;
@@ -389,12 +433,10 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
         }
-
         .blog-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
-
         .blog-image {
             height: 180px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -404,33 +446,28 @@
             color: white;
             font-size: 1rem;
         }
-
         .blog-content {
             padding: 1.5rem;
         }
-
         .blog-meta {
             color: #999;
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
         }
-
         .blog-content h3 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: #333;
         }
-
         .blog-content p {
             color: #666;
             font-size: 0.9rem;
             line-height: 1.6;
         }
-
         /* Contact Section */
         .contact {
             padding: 5rem 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #1e2a4a 100%);
             color: white;
         }
 
@@ -529,7 +566,7 @@
 
         /* Footer */
         .footer {
-            background: #1a1a1a;
+            background: #141a30;
             color: white;
             padding: 3rem 0 1rem;
         }
@@ -562,6 +599,22 @@
             padding-top: 1rem;
             text-align: center;
             color: #999;
+        }
+
+        /* Pre-Footer CTA (Unified) */
+        .prefooter-cta { padding: 4rem 0; background: #727275; }
+        .prefooter-cta .cta-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .prefooter-cta .lead { display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items:center; margin-bottom: 1.5rem; }
+        .prefooter-cta .lead h2 { margin:0; font-size: 1.8rem; font-weight: 800; color:#ffffff; }
+        .prefooter-cta .lead p { margin:0; color:#ffffff; line-height:1.8; }
+        .prefooter-cta .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.25rem; }
+        .prefooter-cta .cta-card { border-radius: 20px; padding: 2.5rem 2rem; color:#fff; text-decoration:none; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; box-shadow:0 12px 30px rgba(0,0,0,.12); transition: transform .2s ease, box-shadow .2s ease; text-align:center; }
+        .prefooter-cta .cta-card:hover { transform: translateY(-3px); box-shadow:0 18px 44px rgba(0,0,0,.18); }
+        .prefooter-cta .card-dark { background:#1f2937 !important; color:#fff; border:none; }
+        .prefooter-cta .card-blue { background:#0B5BD3; }
+        @media (max-width: 900px){
+            .prefooter-cta .lead { grid-template-columns: 1fr; gap: .75rem; }
+            .prefooter-cta .grid { grid-template-columns: 1fr; }
         }
 
         /* Animations */
@@ -689,7 +742,7 @@
                 <li><a href="#services">サービス</a></li>
                 <li><a href="#about">会社概要</a></li>
                 <li><a href="#case-studies">導入事例</a></li>
-                <li><a href="#blog">ブログ</a></li>
+                <li><a href="contents.html">お役立ちコンテンツ</a></li>
                 <li><a href="#contact">お問い合わせ</a></li>
             </nav>
             <a href="#contact" class="cta-button">無料相談</a>
@@ -716,13 +769,8 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <div class="section-title fade-in">
-                <h2>AI-Powered Intelligent Website</h2>
-                <p>AIテクノロジーが実現する、自ら成長し続けるWebサイトソリューション</p>
-            </div>
-            
             <!-- Main Service Hero -->
-            <div class="main-service-hero fade-in" style="margin-top: 4rem; text-align: center; background: rgba(255, 255, 255, 0.1); padding: 4rem 2rem; border-radius: 30px; backdrop-filter: blur(10px);">
+            <div class="main-service-hero fade-in" style="margin-top: 1rem; text-align: center; background: rgba(255, 255, 255, 0.1); padding: 4rem 2rem; border-radius: 30px; backdrop-filter: blur(10px);">
                 <div style="max-width: 800px; margin: 0 auto;">
                     <h3 style="font-size: 2.5rem; color: white; margin-bottom: 1.5rem; font-weight: 700;">自己進化するWebサイト</h3>
                     <p style="font-size: 1.3rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; line-height: 1.8;">ユーザーの行動データをリアルタイムで学習し、コンテンツ・デザイン・ユーザー体験を自動最適化。人間の手を介さずに、継続的にパフォーマンスを向上させます。</p>
@@ -753,7 +801,7 @@
             </div>
 
             <!-- Service Features Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 4rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 1rem;">
                 <div class="service-feature-card fade-in" style="background: rgba(255, 255, 255, 0.95); padding: 2.5rem; border-radius: 20px; text-align: left; backdrop-filter: blur(10px);">
                     <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
                         <span style="font-size: 1.5rem; color: white;">🎯</span>
@@ -807,28 +855,6 @@
                 </div>
             </div>
 
-            <!-- Performance Metrics -->
-            <div class="performance-metrics fade-in" style="margin-top: 4rem; text-align: center; background: rgba(255, 255, 255, 0.1); padding: 3rem 2rem; border-radius: 20px; backdrop-filter: blur(10px);">
-                <h3 style="color: white; font-size: 1.8rem; margin-bottom: 2rem;">実証された成果</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
-                    <div>
-                        <div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">285%</div>
-                        <p style="color: rgba(255, 255, 255, 0.8);">コンバージョン率向上</p>
-                    </div>
-                    <div>
-                        <div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">67%</div>
-                        <p style="color: rgba(255, 255, 255, 0.8);">運用コスト削減</p>
-                    </div>
-                    <div>
-                        <div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">24/7</div>
-                        <p style="color: rgba(255, 255, 255, 0.8);">自動最適化稼働</p>
-                    </div>
-                    <div>
-                        <div style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0.5rem;">∞</div>
-                        <p style="color: rgba(255, 255, 255, 0.8);">継続的成長</p>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -853,188 +879,86 @@
         </div>
     </section>
 
-    <!-- Case Studies Section -->
-    <section class="case-studies" id="case-studies">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>導入事例</h2>
-                <p>様々な業界のクライアント様の成功事例をご紹介します</p>
-            </div>
-            <div class="case-grid">
-                <div class="case-card fade-in">
-                    <div class="case-image">製造業A社 様</div>
-                    <div class="case-content">
-                        <h3>BtoB製造業のAI化プロジェクト</h3>
-                        <p>従来のWebサイトをAI駆動型にリニューアル。ユーザー行動に基づく自動コンテンツ最適化により、問い合わせ品質が大幅向上。</p>
-                        <div class="case-results">
-                            <span class="result-item">問い合わせ285%増</span>
-                            <span class="result-item">売上180%向上</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="case-card fade-in">
-                    <div class="case-image">小売業B社 様</div>
-                    <div class="case-content">
-                        <h3>ECサイトのパーソナライゼーション</h3>
-                        <p>AI学習エンジンによる個別最適化でユーザー体験を革新。購買行動データから自動でレコメンド精度を向上。</p>
-                        <div class="case-results">
-                            <span class="result-item">売上250%増</span>
-                            <span class="result-item">CV率3.2倍</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="case-card fade-in">
-                    <div class="case-image">サービス業C社 様</div>
-                    <div class="case-content">
-                        <h3>AI powered マーケティング自動化</h3>
-                        <p>Webサイトが自動でA/Bテストを実行し、最適なコンテンツを配信。人的リソース削減と成果向上を同時達成。</p>
-                        <div class="case-results">
-                            <span class="result-item">運用コスト67%削減</span>
-                            <span class="result-item">リード品質向上</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Blog Section -->
     <section class="blog" id="blog">
         <div class="container">
             <div class="section-title fade-in">
-                <h2>ブログ・コラム</h2>
+                <h2>ビジネスに役立つコンテンツ</h2>
                 <p>AIテクノロジーとWebサイト最適化に関する最新情報とノウハウをお届けします</p>
             </div>
-            <div class="blog-grid">
-                <article class="blog-card fade-in">
-                    <div class="blog-image">AI Web最適化ガイド</div>
-                    <div class="blog-content">
-                        <div class="blog-meta">2024年9月10日 | AI・マーケティング</div>
-                        <h3>2024年版 AIによるWebサイト自動最適化の基本</h3>
-                        <p>機械学習を活用したWebサイトの自動改善について、導入から効果測定まで詳しく解説します。</p>
-                    </div>
-                </article>
-                <article class="blog-card fade-in">
-                    <div class="blog-image">パーソナライゼーション</div>
-                    <div class="blog-content">
-                        <div class="blog-meta">2024年9月8日 | UX・AI</div>
-                        <h3>AIパーソナライゼーションで実現する次世代UX</h3>
-                        <p>ユーザー一人一人に最適化されたWebエクスペリエンスの設計方法と成功事例をご紹介します。</p>
-                    </div>
-                </article>
-                <article class="blog-card fade-in">
-                    <div class="blog-image">データ分析活用</div>
-                    <div class="blog-content">
-                        <div class="blog-meta">2024年9月5日 | データ活用</div>
-                        <h3>AIが変える今後のWebアナリティクス</h3>
-                        <p>従来のアクセス解析を超えた、AIによる予測分析とリアルタイム最適化の活用法を解説します。</p>
-                    </div>
-                </article>
-                <article class="blog-card fade-in">
-                    <div class="blog-image">自動A/Bテスト</div>
-                    <div class="blog-content">
-                        <div class="blog-meta">2024年9月3日 | テスト自動化</div>
-                        <h3>AIによる自動A/Bテストで効率的な改善を実現</h3>
-                        <p>人の手を介さずにWebサイトが自ら最適解を見つける、次世代テスト手法をご紹介します。</p>
-                    </div>
-                </article>
-                <article class="blog-card fade-in">
-                    <div class="blog-image">ROI最大化戦略</div>
-                    <div class="blog-content">
-                        <div class="blog-meta">2024年9月1日 | 投資対効果</div>
-                        <h3>AI投資のROI最大化：導入から成果測定まで</h3>
-                        <p>AIWebサイト導入における投資対効果の算出方法と、継続的な価値創造のポイントを解説します。</p>
-                    </div>
-                </article>
-                <article class="blog-card fade-in">
-                    <div class="blog-image">未来のWeb体験</div>
-                    <div class="blog-content">
-                        <div class="blog-meta">2024年8月28日 | 技術トレンド</div>
-                        <h3>2025年のWebサイトはどう進化するか</h3>
-                        <p>AI、機械学習、IoTが融合した次世代Webエクスペリエンスの可能性を探ります。</p>
-                    </div>
-                </article>
+            <div class="blog-tabs" role="tablist" aria-label="コンテンツ切替">
+                <button class="blog-tab active" role="tab" aria-selected="true" aria-controls="panel-latest" id="tab-latest">最新情報</button>
+                <button class="blog-tab" role="tab" aria-selected="false" aria-controls="panel-topics" id="tab-topics">注目トピック</button>
+            </div>
+
+            <div id="panel-latest" class="tab-panel active" role="tabpanel" aria-labelledby="tab-latest">
+                <div class="blog-grid">
+                    <article class="blog-card fade-in">
+                        <a href="#" class="blog-image">AI Web最適化ガイド</a>
+                        <div class="blog-content">
+                            <div class="blog-meta">2024年9月10日 | AI・マーケティング</div>
+                            <h3><a href="#">2024年版 AIによるWebサイト自動最適化の基本</a></h3>
+                            <p>機械学習を活用したWebサイトの自動改善について、導入から効果測定まで詳しく解説します。</p>
+                        </div>
+                    </article>
+                    <article class="blog-card fade-in">
+                        <a href="#" class="blog-image">パーソナライゼーション</a>
+                        <div class="blog-content">
+                            <div class="blog-meta">2024年9月8日 | UX・AI</div>
+                            <h3><a href="#">AIパーソナライゼーションで実現する次世代UX</a></h3>
+                            <p>ユーザー一人一人に最適化されたWebエクスペリエンスの設計方法と成功事例をご紹介します。</p>
+                        </div>
+                    </article>
+                    <article class="blog-card fade-in">
+                        <a href="#" class="blog-image">データ分析活用</a>
+                        <div class="blog-content">
+                            <div class="blog-meta">2024年9月5日 | データ活用</div>
+                            <h3><a href="#">AIが変える今後のWebアナリティクス</a></h3>
+                            <p>従来のアクセス解析を超えた、AIによる予測分析とリアルタイム最適化の活用法を解説します。</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="panel-topics" class="tab-panel" role="tabpanel" aria-labelledby="tab-topics">
+                <div class="blog-grid">
+                    <article class="blog-card fade-in">
+                        <a href="#" class="blog-image">自動A/Bテスト</a>
+                        <div class="blog-content">
+                            <div class="blog-meta">2024年9月3日 | テスト自動化</div>
+                            <h3><a href="#">AIによる自動A/Bテストで効率的な改善を実現</a></h3>
+                            <p>人の手を介さずにサイトが自ら最適解を見つける、次世代テスト手法をご紹介します。</p>
+                        </div>
+                    </article>
+                    <article class="blog-card fade-in">
+                        <a href="#" class="blog-image">ROI最大化戦略</a>
+                        <div class="blog-content">
+                            <div class="blog-meta">2024年9月1日 | 投資対効果</div>
+                            <h3><a href="#">AI投資のROI最大化：導入から成果測定まで</a></h3>
+                            <p>AI導入における投資対効果の算出方法と、継続的な価値創造のポイントを解説します。</p>
+                        </div>
+                    </article>
+                    <article class="blog-card fade-in">
+                        <a href="#" class="blog-image">未来のWeb体験</a>
+                        <div class="blog-content">
+                            <div class="blog-meta">2024年8月28日 | 技術トレンド</div>
+                            <h3><a href="#">2025年のWebサイトはどう進化するか</a></h3>
+                            <p>AI、機械学習、IoTが融合した次世代Webエクスペリエンスの可能性を探ります。</p>
+                        </div>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info fade-in">
-                    <h2>お問い合わせ</h2>
-                    <p>AIWebサイトプロジェクトのご相談や無料診断など、お気軽にお問い合わせください。専門のコンサルタントが対応いたします。</p>
-                    
-                    <div class="contact-item">
-                        <div class="contact-item-icon">📞</div>
-                        <div>
-                            <strong>電話</strong><br>
-                            03-1234-5678<br>
-                            <small>平日 9:00-18:00</small>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-item-icon">✉️</div>
-                        <div>
-                            <strong>メール</strong><br>
-                            info@sasurai.co.jp<br>
-                            <small>24時間受付</small>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-item-icon">📍</div>
-                        <div>
-                            <strong>所在地</strong><br>
-                            東京都渋谷区〇〇1-2-3<br>
-                            <small>〇〇ビル 5F</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form fade-in" id="contact-form">
-                    <div class="form-group">
-                        <label for="company">会社名 *</label>
-                        <input type="text" id="company" name="company" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="name">お名前 *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">メールアドレス *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">電話番号</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">ご相談内容</label>
-                        <select id="service" name="service" style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: rgba(255, 255, 255, 0.9); font-size: 1rem;">
-                            <option value="">選択してください</option>
-                            <option value="ai-website">AIWebサイト開発</option>
-                            <option value="optimization">自動最適化システム</option>
-                            <option value="consulting">AIコンサルティング</option>
-                            <option value="maintenance">運用・保守サービス</option>
-                            <option value="migration">既存サイトAI化</option>
-                            <option value="other">その他</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">詳細・ご要望</label>
-                        <textarea id="message" name="message" placeholder="プロジェクトの詳細やご要望をお聞かせください"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">無料相談を申し込む</button>
-                </form>
+    <section class="prefooter-cta" aria-label="行動喚起">
+        <div class="cta-wrap">
+            <div class="lead">
+                <h2>デジタルマーケティングのお悩み、<br>まずはお気軽にご相談ください。</h2>
+                <p>SASURAIがお客様と共に考え、最適な解決の方向性をディスカッションを通じて見つけ出します。サービス詳細は資料でもご確認いただけます。</p>
+            </div>
+            <div class="grid">
+                <a class="cta-card card-dark" href="#trial">まずは無料体験をしてみる</a>
+                <a class="cta-card card-blue" href="#contact">まずは相談してみる</a>
             </div>
         </div>
     </section>
@@ -1062,7 +986,7 @@
                     <h3>会社情報</h3>
                     <p><a href="#about">会社概要</a></p>
                     <p><a href="#case-studies">導入事例</a></p>
-                    <p><a href="#blog">ブログ</a></p>
+                    <p><a href="contents.html">お役立ちコンテンツ</a></p>
                     <p><a href="#contact">お問い合わせ</a></p>
                     <p><a href="#">プライバシーポリシー</a></p>
                 </div>
@@ -1086,11 +1010,7 @@
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
-            if (window.scrollY > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+            // 固定色を維持するため何もしない
         });
 
         // Mobile menu toggle
@@ -1188,6 +1108,22 @@
                 submitBtn.disabled = false;
             }, 2000);
         });
+    </script>
+    <script>
+      (function(){
+        const tabs = document.querySelectorAll('.blog-tab');
+        const panels = document.querySelectorAll('.tab-panel');
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+            tab.classList.add('active');
+            const panel = document.getElementById(tab.id.replace('tab','panel'));
+            if (panel) panel.classList.add('active');
+            tabs.forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
+          });
+        });
+      })();
     </script>
 </body>
 </html>

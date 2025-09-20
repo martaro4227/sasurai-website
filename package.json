@@ -9,7 +9,8 @@
     "dev": "live-server --port=8000 --host=localhost --open=/ --watch=.",
     "build": "echo 'No build process required for static HTML'",
     "format": "prettier --write '**/*.{html,css,js,json}'",
-    "lint": "echo 'Linting HTML, CSS, JS files...'"
+    "lint": "echo 'Linting HTML, CSS, JS files...'",
+    "import:notion": "node scripts/import-notion.mjs --page $NOTION_PAGE_ID --file articles/aio-2025-guide.html --update-title"
   },
   "keywords": [
     "AI",
@@ -21,10 +22,11 @@
   "author": "株式会社SASURAI",
   "license": "MIT",
   "devDependencies": {
+    "@notionhq/client": "^5.1.0",
+    "autoprefixer": "^10.4.16",
     "live-server": "^1.2.2",
     "prettier": "^3.0.0",
-    "sass": "^1.69.0",
-    "autoprefixer": "^10.4.16"
+    "sass": "^1.69.0"
   },
   "repository": {
     "type": "git",

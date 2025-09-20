@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2024年版 AIによるWebサイト自動最適化の基本</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --brand:#667eea; --brand2:#764ba2; --narrow: 680px; }
+    :root { --primary:#131c32; --accent1:#60a5fa; --accent2:#22d3ee; --text:#0f172a; --muted:#64748b; }
+    * { box-sizing: border-box; }
+                                           body { font-family: 'Zen Kaku Gothic New', Inter, system-ui, -apple-system, sans-serif; margin:0; color:#0f172a; }
+    /* header */
+    .header { position: fixed; top:0; width:100%; background: #101d32; z-index:1000; padding:1rem 0; }
+    .nav-container { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:0 2rem; }
+    .logo { font-size:1.5rem; font-weight:700; background: linear-gradient(135deg, var(--brand), var(--brand2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .nav-menu { display:flex; list-style:none; gap:2rem; }
+    .nav-menu a { text-decoration:none; color:#e5e7eb; font-weight:600; position:relative; }
+    .nav-menu a:hover { color: var(--accent1); }
+    .nav-menu a::after { content:''; position:absolute; width:0; height:2px; bottom:-5px; left:0; background:linear-gradient(135deg, var(--accent1), var(--accent2)); transition:width .3s ease; }
+    .nav-menu a:hover::after { width:100%; }
+    .cta-button { background: linear-gradient(135deg, var(--brand), var(--brand2)); color:#fff; padding:.8rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:600; }
+    .spacer { height: 64px; }
+    /* article */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+    .hero { padding: 2.5rem 0 1rem; }
+    .title { font-size: 2rem; font-weight: 800; line-height:1.25; margin:0 0 .75rem; }
+    .meta { color:#64748b; margin-bottom: 1.25rem; }
+    .lead { background: linear-gradient(135deg, rgba(102,126,234,.08), rgba(118,75,162,.08)); border-radius:14px; padding:1.25rem 1rem; color:#334155; }
+    /* eyecatch */
+    .eyecatch { margin: 1rem 0 1.25rem; border-radius: 16px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.12); max-width: var(--narrow); }
+    .eyecatch .banner { height: 300px; background: linear-gradient(135deg, #0B5BD3, #1d4ed8); display:flex; align-items:center; justify-content:center; position:relative; }
+    .eyecatch .banner::after { content:''; position:absolute; inset:0; box-shadow: inset 0 10px 40px rgba(0,0,0,.25); border-radius:16px; }
+    .eyecatch h2 { position:relative; z-index:1; color:#fff; font-size:2rem; font-weight:800; text-align:center; line-height:1.35; }
+                           .article { display:grid; grid-template-columns: 320px 1fr; gap:2rem; margin-top: 1.5rem; overflow:visible; align-items: stretch; }
+       .sidebar { position: static; top: auto; align-self: stretch; height:auto; overflow:visible; }
+    /* inline toc */
+    .lany-c-toc { margin: 0 0 1.25rem; max-width: var(--narrow); padding: 0; background: transparent; border: 0; }
+    .lany-c-toc .toc-inner { width: calc(var(--narrow) / 2); border:1px solid #e5e7eb; border-radius:14px; background:#f8fafc; padding:1rem 1.25rem; }
+    .lany-c-toc .title { display:block; font-weight:800; color:#1e40af; margin-bottom:.5rem; }
+    .lany-c-toc .h2list { list-style: disc inside; margin:0; padding:0; color:#334155; }
+    .lany-c-toc .h2list li { margin:.5rem 0; }
+    .lany-c-toc a { color:#334155; text-decoration:none; }
+    .lany-c-toc a:hover { color:#1e40af; }
+    /* pickup and categories blocks (sidebar-style under inline toc) */
+          .pickup-block, .category-block { margin: 0 0 1rem; max-width: none; }
+          .pickup-block .inner, .category-block .inner { width: 100%; border:1px solid #e5e7eb; border-radius:14px; background:#f8fafc; padding:1rem 1.25rem; }
+    .pickup-title, .category-title { font-weight:800; color:#111827; margin:0 0 .5rem; }
+    .pickup-list { list-style:none; margin:0; padding:0; }
+          .pickup-list li { padding:.6rem 0; border-top:0; }
+    .pickup-list li:first-child { border-top:0; }
+    .pickup-list a { color:#1f2937; font-weight:600; text-decoration:none; }
+    .pickup-list a:hover { color:#1e40af; }
+    /* pickup card style */
+    .pickup-card { display:flex; gap:.6rem; align-items:flex-start; }
+    .pickup-thumb { flex:0 0 72px; height:48px; border-radius:8px; overflow:hidden; position:relative; background:#e5e7eb; }
+    .pickup-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+    .pickup-body { min-width:0; }
+    .pickup-cat { font-size:.72rem; color:#64748b; margin:0 0 .1rem; }
+    .pickup-title { font-size:.9rem; font-weight:700; color:#111827; margin:0; line-height:1.35; }
+    .pickup-link { display:block; color:inherit; text-decoration:none; }
+    .pickup-link:hover .pickup-title { color:#1e40af; }
+    .pickup-meta { display:block; color:#64748b; font-size:.8rem; margin-top:.15rem; }
+    .tag-cloud { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .tag-pill { display:inline-block; padding:.25rem .55rem; border-radius:999px; background:#eef2ff; color:#3730a3; font-size:.78rem; text-decoration:none; }
+    .tag-pill:hover { background:#e0e7ff; }
+    /* sticky toc in sidebar */
+    .sidebar-toc { position:-webkit-sticky; position: sticky; top: 90px; z-index: 2; border:1px solid #e5e7eb; border-radius:12px; padding:1rem; background:#fff; }
+    .sidebar-toc h3 { margin:.25rem 0 .5rem; font-size:1rem; color:#1e40af; font-weight:800; }
+    .sidebar-toc a { display:block; color:#334155; text-decoration:none; padding:.25rem 0; font-size:.95rem; }
+    .sidebar-toc a:hover { color: var(--brand); }
+    .toc { position:sticky; top: 90px; align-self:start; border:1px solid #e5e7eb; border-radius:12px; padding:1rem; }
+    .toc h3 { margin:.25rem 0  .5rem; font-size:1rem; }
+    .toc a { display:block; color:#334155; text-decoration:none; padding:.25rem 0; font-size:.95rem; }
+    .toc a:hover { color: var(--brand); }
+    .content h2 { font-size:1.5rem; margin:2rem 0 .5rem; }
+    .content p { line-height:1.9; color:#334155; }
+    .note { background:#fff7ed; border:1px solid #fed7aa; padding:.75rem 1rem; border-radius:10px; }
+    /* prefooter CTA (unified) */
+    .prefooter-cta { padding: 3.5rem 0; background: #727275; }
+    .prefooter-cta .cta-wrap { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .prefooter-cta .leadbox { display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; align-items:center; margin-bottom: 1.5rem; }
+    .prefooter-cta h2 { margin:0; font-size: 1.8rem; font-weight:800; color:#ffffff; }
+    .prefooter-cta p { margin:0; color:#ffffff; line-height:1.8; }
+    .prefooter-cta .grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:1.25rem; }
+    .cta-card { border-radius:20px; padding:2.5rem 2rem; color:#fff; text-decoration:none; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.25rem; box-shadow:0 12px 30px rgba(0,0,0,.12); text-align:center; }
+    .card-dark { background:#1f2937; } .card-blue { background:#0B5BD3; }
+    @media (max-width: 1024px){ .eyecatch, .lany-c-toc, .pickup-block, .category-block{ max-width: 100%; } .lany-c-toc .toc-inner, .pickup-block .inner, .category-block .inner { width: 100%; } }
+    @media (max-width: 900px){ .sidebar{ position:static; } .article{ grid-template-columns:1fr; } .prefooter-cta .leadbox{ grid-template-columns:1fr; gap:.75rem; } .prefooter-cta .grid{ grid-template-columns:1fr; } }
+    /* footer */
+    .footer { background:#141a30; color:#fff; padding:3rem 0 1rem; }
+          .footer .container { max-width:1200px; padding:0 2rem; color:#e5e7eb; }
+    .footer-content { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:2rem; margin-bottom:2rem; }
+    .footer-section h3 { margin-bottom:1rem; color:#667eea; }
+    .footer-section p, .footer-section a { color:#ccc; text-decoration:none; line-height:1.8; }
+    .footer-section a:hover { color:#667eea; }
+    .footer-bottom { border-top:1px solid #333; padding-top:1rem; text-align:center; color:#999; }
+    /* related cards */
+    .c-related__list { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:1rem; list-style:none; padding:0; margin: 1rem 0 2rem; }
+    .lany-c-card1 { display:block; color:inherit; text-decoration:none; border-radius:14px; overflow:hidden; background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.08); transition:transform .2s ease, box-shadow .2s ease; }
+    .lany-c-card1:hover { transform: translateY(-3px); box-shadow:0 16px 40px rgba(0,0,0,.12); }
+    .c-card1__inner { display:flex; flex-direction:column; }
+    .c-card1__img { height:140px; margin:0; position:relative; background:#e5e7eb; display:flex; align-items:center; justify-content:center; }
+    .c-card1__img img { max-height:100%; max-width:100%; object-fit:cover; display:block; }
+    .c-card1__img span { position:absolute; inset:0; background-size:cover; background-position:center; opacity:.15; }
+    .c-card1__meta { display:flex; justify-content:space-between; padding:.5rem .75rem 0; font-size:.8rem; color:#64748b; }
+    .c-card1__category { color:var(--accent1); font-weight:700; }
+    .c-card1__title { padding:.25rem .75rem 1rem; font-weight:700; line-height:1.5; }
+  </style>
+</head>
+<body>
+<header class="header" id="header">
+  <div class="nav-container">
+    <div class="logo">SASURAI</div>
+    <nav class="nav-menu" id="nav-menu">
+      <li><a href="../index.html#home">ホーム</a></li>
+      <li><a href="../index.html#services">サービス</a></li>
+      <li><a href="../index.html#about">会社概要</a></li>
+      <li><a href="../index.html#case-studies">導入事例</a></li>
+      <li><a href="../contents.html">お役立ちコンテンツ</a></li>
+      <li><a href="../index.html#contact">お問い合わせ</a></li>
+    </nav>
+    <a href="../index.html#contact" class="cta-button">無料相談</a>
+  </div>
+</header>
+<div class="spacer"></div>
+
+<main class="container">
+  <section class="hero --placeholder"></section>
+
+  <section class="article">
+    <aside class="sidebar" aria-label="サイドバー">
+      <section class="pickup-block" aria-label="ピックアップ記事">
+        <div class="inner">
+          <h3 class="pickup-title">ピックアップ記事</h3>
+          <ul class="pickup-list">
+            <li>
+              <a class="pickup-link" href="../contents.html">
+                <div class="pickup-card">
+                  <figure class="pickup-thumb"><img src="https://dummyimage.com/320x180/0b5bd3/ffffff&text=AI+Overviews" alt="AI Overviewsとは？"></figure>
+                  <div class="pickup-body">
+                    <div class="pickup-cat">LLMO・AI</div>
+                    <p class="pickup-title">AI Overviewsとは？SGEとの違いやSEOへの影響を解説</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="pickup-link" href="../contents.html">
+                <div class="pickup-card">
+                  <figure class="pickup-thumb"><img src="https://dummyimage.com/320x180/2563eb/ffffff&text=LLMO" alt="LLMOとは？"></figure>
+                  <div class="pickup-body">
+                    <div class="pickup-cat">LLMO・AI</div>
+                    <p class="pickup-title">LLMOとは？SEOとの違いや生成AI時代の対策方法をわかりやすく解説</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="pickup-link" href="../contents.html">
+                <div class="pickup-card">
+                  <figure class="pickup-thumb"><img src="https://dummyimage.com/320x180/1d4ed8/ffffff&text=BtoB" alt="BtoBに強い記事制作の方法"></figure>
+                  <div class="pickup-body">
+                    <div class="pickup-cat">記事制作</div>
+                    <p class="pickup-title">BtoBに強い記事制作の方法は？目的や種類、SEOの外注先の選び方</p>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="category-block" aria-label="カテゴリー">
+        <div class="inner">
+          <h3 class="category-title">カテゴリー</h3>
+          <div class="tag-cloud">
+            <a class="tag-pill" href="../contents.html#tag=AI">#AI</a>
+            <a class="tag-pill" href="../contents.html#tag=最適化">#最適化</a>
+            <a class="tag-pill" href="../contents.html#tag=マーケ">#マーケ</a>
+            <a class="tag-pill" href="../contents.html#tag=UX">#UX</a>
+            <a class="tag-pill" href="../contents.html#tag=パーソナライズ">#パーソナライズ</a>
+            <a class="tag-pill" href="../contents.html#tag=分析">#分析</a>
+            <a class="tag-pill" href="../contents.html#tag=データ">#データ</a>
+            <a class="tag-pill" href="../contents.html#tag=テスト">#テスト</a>
+            <a class="tag-pill" href="../contents.html#tag=自動化">#自動化</a>
+            <a class="tag-pill" href="../contents.html#tag=ROI">#ROI</a>
+            <a class="tag-pill" href="../contents.html#tag=投資">#投資</a>
+            <a class="tag-pill" href="../contents.html#tag=評価">#評価</a>
+            <a class="tag-pill" href="../contents.html#tag=将来">#将来</a>
+            <a class="tag-pill" href="../contents.html#tag=トレンド">#トレンド</a>
+          </div>
+        </div>
+      </section>
+      <div class="sidebar-toc">
+        <h3>目次</h3>
+        <ul class="h2list">
+          <li><a class="tocLink" href="#sec1"><span>AIによる自動最適化とは</span></a></li>
+          <li><a class="tocLink" href="#sec2"><span>導入のステップ</span></a></li>
+          <li><a class="tocLink" href="#sec3"><span>運用とKPI設計</span></a></li>
+          <li><a class="tocLink" href="#sec4"><span>よくある課題と対策</span></a></li>
+          <li><a class="tocLink" href="#summary"><span>まとめ</span></a></li>
+        </ul>
+      </div>
+    </aside>
+    <article class="content">
+      <h1 class="title">2024年版 AIによるWebサイト自動最適化の基本</h1>
+      <div class="meta">2024年9月10日 | AI・マーケティング</div>
+      <div class="lead">機械学習を活用してWebサイトが自ら学習・最適化する「AIによる自動最適化」の全体像を、導入前の考え方から実装・運用・評価まで、初めての方にも分かりやすく整理します。</div>
+      <figure class="eyecatch">
+        <div class="banner">
+          <h2>AIによる自動最適化の基本</h2>
+        </div>
+      </figure>
+      <div class="s-detail__toc lany-c-toc" id="toc">
+        <div class="toc-inner">
+          <span class="title">目次</span>
+          <ul class="h2list">
+            <li><a class="tocLink" href="#sec1"><span>AIによる自動最適化とは</span></a></li>
+            <li><a class="tocLink" href="#sec2"><span>導入のステップ</span></a></li>
+            <li><a class="tocLink" href="#sec3"><span>運用とKPI設計</span></a></li>
+            <li><a class="tocLink" href="#sec4"><span>よくある課題と対策</span></a></li>
+            <li><a class="tocLink" href="#summary"><span>まとめ</span></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="sec1">AIによる自動最適化とは</h2>
+      <p>AIによる自動最適化は、ユーザー行動データを常時学習し、UI・コンテンツ・レコメンド・導線を自動で更新していく仕組みです。A/Bテストのような手動比較に比べ、探索と活用を高速に回すことで、継続的な改善が可能になります。LANYの解説（参考: <a href="https://www.lany.co.jp/blog/ai-overview">LANY AI Overviews解説</a>）でも、AIの要約や評価が検索体験を変えるとされています。</p>
+      <div class="note">ポイント: 収集できる一次データ（行動・購買・アンケート）を"一元化"し、同意管理とプライバシー対応を前提に学習させることが成功の前提です。</div>
+
+      <h2 id="sec2">導入のステップ</h2>
+      <p>導入は「要件定義 → データ連携 → モデル/ルール設定 → 検証 → 本番展開」の順で進めます。初期段階では限定スコープで効果検証し、徐々に対象ページや機能を広げるのが安全です。</p>
+      <ul>
+        <li>要件定義: ビジネスKPI、計測イベント、対象セクションの洗い出し</li>
+        <li>データ連携: 分析基盤/CDP との接続、同意管理</li>
+        <li>モデル/ルール設定: レコメンド/パーソナライズ/LP最適化の方針</li>
+        <li>検証: サンドボックス/限定公開でのA/A・A/B評価</li>
+        <li>本番展開: ロールアウト計画、フェイルセーフ設計</li>
+      </ul>
+
+      <h2 id="sec3">運用とKPI設計</h2>
+      <p>運用では、<strong>意思決定の粒度</strong>と<strong>学習サイクル</strong>を明確にします。代表的なKPIはCVR・LTV・滞在時間・離脱率等。モデル貢献度はインクリメンタルリフトで把握し、ダッシュボードで継続監視します。</p>
+
+      <h2 id="sec4">よくある課題と対策</h2>
+      <p>「ブラックボックス感」「十分な学習データ不足」「コンテンツ制作負荷」などが挙がります。対策としては、<em>ルールベースとAIのハイブリッド</em>、<em>初期は高頻度ページに絞る</em>、<em>モジュール化したコンポーネントで制作負荷を削減</em> などが有効です。</p>
+
+      <h2 id="summary">まとめ</h2>
+      <p>AIによる自動最適化は、"一度導入して終わり"ではなく、データと仮説の循環を回し続ける運用が要です。小さく始め、学習と検証を積み重ね、スコープを拡張していくことで、継続的な成果が期待できます。</p>
+
+      <h2>関連記事</h2>
+      <ul class="c-related__list">
+        <li class="c-related__item">
+          <a href="../contents.html" class="lany-c-card1">
+            <div class="c-card1__inner">
+              <figure class="c-card1__img">
+                <img src="https://dummyimage.com/640x360/0b5bd3/ffffff&text=AI+Mode" alt="アイキャッチ画像" class="--center">
+                <span style="background-image:url('https://dummyimage.com/640x360/0b5bd3/ffffff')"></span>
+              </figure>
+              <div class="c-card1__meta"><span class="c-card1__category">LLMO・AI</span><time class="c-card1__date" datetime="2025-08-18">2025.08.18</time></div>
+              <div class="c-card1__title">Google検索の新機能「AIモード」とは？SEOへの影響や対策方法を解説</div>
+            </div>
+          </a>
+        </li>
+        <li class="c-related__item">
+          <a href="../contents.html" class="lany-c-card1">
+            <div class="c-card1__inner">
+              <figure class="c-card1__img">
+                <img src="https://dummyimage.com/640x360/2563eb/ffffff&text=Content+Marketing" alt="アイキャッチ画像" class="--center">
+                <span style="background-image:url('https://dummyimage.com/640x360/2563eb/ffffff')"></span>
+              </figure>
+              <div class="c-card1__meta"><span class="c-card1__category">LLMO・AI</span><time class="c-card1__date" datetime="2025-07-22">2025.07.22</time></div>
+              <div class="c-card1__title">AIを活用したコンテンツマーケティングとは？メリットやデメリット、活用方法を解説</div>
+            </div>
+          </a>
+        </li>
+        <li class="c-related__item">
+          <a href="../contents.html" class="lany-c-card1">
+            <div class="c-card1__inner">
+              <figure class="c-card1__img">
+                <img src="https://dummyimage.com/640x360/1d4ed8/ffffff&text=BtoB+Marketing" alt="アイキャッチ画像" class="--center">
+                <span style="background-image:url('https://dummyimage.com/640x360/1d4ed8/ffffff')"></span>
+              </figure>
+              <div class="c-card1__meta"><span class="c-card1__category">LLMO・AI</span><time class="c-card1__date" datetime="2025-08-04">2025.08.04</time></div>
+              <div class="c-card1__title">AIを活用したBtoBマーケティングとは?メリットやデメリット、ポイントを解説</div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<section class="prefooter-cta" aria-label="行動喚起">
+  <div class="cta-wrap">
+    <div class="leadbox">
+      <h2>デジタルマーケティングのお悩み、<br>まずはお気軽にご相談ください。</h2>
+      <p>SASURAIがお客様と共に考え、最適な解決の方向性をディスカッションを通じて見つけ出します。サービス詳細は資料でもご確認いただけます。</p>
+    </div>
+    <div class="grid">
+      <a class="cta-card card-dark" href="#trial">まずは無料体験をしてみる</a>
+      <a class="cta-card card-blue" href="../index.html#contact">まずは相談してみる</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>SASURAI</h3>
+        <p>AIテクノロジーで自ら成長し続けるWebサイトの開発・提供・運用保守・コンサルティングサービスを提供します。</p>
+        <p>お客様と共に、次世代のWebエクスペリエンスを創造します。</p>
+      </div>
+      <div class="footer-section">
+        <h3>サービス</h3>
+        <p><a href="../index.html#services">AI Webサイト開発</a></p>
+        <p><a href="../index.html#services">システム導入支援</a></p>
+        <p><a href="../index.html#services">運用・保守サービス</a></p>
+        <p><a href="../index.html#services">AIコンサルティング</a></p>
+        <p><a href="../index.html#services">パフォーマンス分析</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>会社情報</h3>
+        <p><a href="../index.html#about">会社概要</a></p>
+        <p><a href="../index.html#case-studies">導入事例</a></p>
+        <p><a href="../contents.html">お役立ちコンテンツ</a></p>
+        <p><a href="../index.html#contact">お問い合わせ</a></p>
+        <p><a href="#">プライバシーポリシー</a></p>
+      </div>
+      <div class="footer-section">
+        <h3>お問い合わせ</h3>
+        <p>📞 03-1234-5678</p>
+        <p>✉️ info@sasurai.co.jp</p>
+        <p>📍 東京都渋谷区〇〇1-2-3</p>
+        <p>🕐 平日 9:00-18:00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 株式会社SASURAI. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('header');
+    const toc = document.getElementById('toc');
+    const tocInner = toc.querySelector('.toc-inner');
+    const tocLinks = tocInner.querySelectorAll('.tocLink');
+
+    function updateTocOffset() {
+      const headerHeight = header.offsetHeight;
+      tocInner.style.top = `${headerHeight}px`;
+    }
+
+    updateTocOffset(); // Set initial offset
+    window.addEventListener('resize', updateTocOffset);
+
+    tocLinks.forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html> 

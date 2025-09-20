@@ -1,0 +1,34 @@
+name: External edit request
+description: 外部コントリビューター向けの編集依頼用テンプレート
+labels: ["help wanted", "good first issue"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        `articles/aio-2025-guide.html` の編集タスクを作るためのフォームです。
+  - type: input
+    id: page
+    attributes:
+      label: 対象ページ
+      description: 例) articles/aio-2025-guide.html
+      placeholder: articles/aio-2025-guide.html
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 作業範囲
+      description: 例) 文面推敲、目次リンク整合、関連カードのマイクロ調整など
+    validations:
+      required: true
+  - type: input
+    id: preview
+    attributes:
+      label: フォーク側プレビューURL（任意）
+      description: GitHub Pages等のプレビューがあれば記載
+      placeholder: https://<your-account>.github.io/<repo>/articles/aio-2025-guide.html
+  - type: textarea
+    id: notes
+    attributes:
+      label: 備考
+      description: その他共有事項があれば記載してください 
